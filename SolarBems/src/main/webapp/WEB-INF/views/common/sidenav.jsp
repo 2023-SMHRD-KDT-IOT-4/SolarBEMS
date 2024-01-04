@@ -88,7 +88,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link text-white " href="${contextPath}/bems/elect_prod_mgmt">
+        <a class="nav-link text-white " href="${contextPath}/bems/device_mgmt">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">settings_remote</i>
           </div>

@@ -7,15 +7,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class BemsController {
 
-	@RequestMapping(value = "/bems/login", method = RequestMethod.GET)
-	public String login() {
+	// 전력 Dashboard 페이지
+	@RequestMapping(value = "/bems/elect_dashboard", method = RequestMethod.GET)
+	public String elecDashBoardPage() {
 		
-		return "user/login";
+		return "bems/elect_dashboard";
 	}
 
-	@RequestMapping(value = "/bems/join", method = RequestMethod.GET)
-	public String join() {
+	// 전력 생산량 관리 페이지
+	@RequestMapping(value = "/bems/elect_prod_mgmt", method = RequestMethod.GET)
+	public String elecProdMgmtPage() {
 		
-		return "user/join";
+		return "bems/elect_prod_mgmt";
+	}
+	
+	// 디바이스 제어 및 관리 페이지
+	@RequestMapping(value = "/bems/device_mgmt", method = RequestMethod.GET)
+	public String deviceMgmtPage() {
+		
+		return "bems/device_mgmt";
+	}
+	
+	// 디바이스 연동 페이지
+	@RequestMapping(value = "/bems/device_link", method = RequestMethod.GET)
+	public String deviceLinkPage() {
+		
+		return "bems/device_link";
+	}
+	
+	// 디바이스 수정 페이지
+	@RequestMapping(value = "/bems/device_update", method = RequestMethod.GET)
+	public String deviceUpdatePage() {
+		
+		return "bems/device_update";
 	}
 }

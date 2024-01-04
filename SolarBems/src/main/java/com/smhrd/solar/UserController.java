@@ -8,14 +8,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UserController {
 
 	@RequestMapping(value = "/user/login", method = RequestMethod.GET)
-	public String login() {
+	public String loginPage() {
 		
 		return "user/login";
 	}
 
 	@RequestMapping(value = "/user/join", method = RequestMethod.GET)
-	public String join() {
+	public String joinPage() {
 		
 		return "user/join";
+	}
+	
+	@RequestMapping(value = "/user/user_update", method = RequestMethod.GET)
+	public String updatePage() {
+		
+		return "user/user_update";
 	}
 }

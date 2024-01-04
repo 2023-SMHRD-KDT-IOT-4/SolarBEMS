@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -183,12 +182,9 @@
         </div>
       </div>
 
-
-      <!-- Start container -->
-
     </div><!-- container-fluid py-2 -->
-
-    <!-- footer Fetch by assets/js/fetch_template.js -->
+    
+		<!-- include footer -->
     <jsp:include page="common/footer.jsp" />
   </main>
 

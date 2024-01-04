@@ -70,7 +70,7 @@
         </h6>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white " href="./bems/elect_dashboard.html">
+        <a class="nav-link text-white " href="${contextPath}/bems/elect_dashboard">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10"> laptop_chromebook</i>
           </div>
@@ -79,7 +79,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link text-white " href="./bems/elect_prod_mgmt.html">
+        <a class="nav-link text-white " href="${contextPath}/bems/elect_prod_mgmt">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">battery_charging_full</i>
           </div>
@@ -88,7 +88,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link text-white " href="./bems/device_mgmt.html">
+        <a class="nav-link text-white " href="${contextPath}/bems/elect_prod_mgmt">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">settings_remote</i>
           </div>
@@ -125,7 +125,7 @@
       </li>  
       
       <li class="nav-item">
-        <a class="nav-link text-white " href="${contextPath}/user/user_update.jsp">
+        <a class="nav-link text-white " href="${contextPath}/user/user_update">
           
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>

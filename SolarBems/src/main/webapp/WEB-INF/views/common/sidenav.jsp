@@ -103,37 +103,52 @@
           회원 메뉴
         </h6>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-white " href="${contextPath}/user/login">
-          
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">login</i>
-            </div>
-          
-          <span class="nav-link-text ms-1">로그인</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white " href="${contextPath}/user/join">
-          
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">assignment</i>
-            </div>
-          
-          <span class="nav-link-text ms-1">회원가입</span>
-        </a>
-      </li>  
       
-      <li class="nav-item">
-        <a class="nav-link text-white " href="${contextPath}/user/user_update">
-          
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
-            </div>
-          
-          <span class="nav-link-text ms-1">회원정보</span>
-        </a>
-      </li>
-    
+      <c:if test="${empty sessionScope.user }">
+	      <li class="nav-item">
+	        <a class="nav-link text-white " href="${contextPath}/user/login">
+	          
+	            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+	              <i class="material-icons opacity-10">login</i>
+	            </div>
+	          
+	          <span class="nav-link-text ms-1">로그인</span>
+	        </a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link text-white " href="${contextPath}/user/join">
+	          
+	            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+	              <i class="material-icons opacity-10">assignment</i>
+	            </div>
+	          
+	          <span class="nav-link-text ms-1">회원가입</span>
+	        </a>
+	      </li>  
+      </c:if>
+      
+      <c:if test="${!empty sessionScope.user }">
+ 	      <li class="nav-item">
+	        <a class="nav-link text-white " href="${contextPath}/user/logout">
+	          
+	            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+	              <i class="material-icons opacity-10">logout</i>
+	            </div>
+	          
+	          <span class="nav-link-text ms-1">로그아웃</span>
+	        </a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link text-white " href="${contextPath}/user/user_update">
+	          
+	            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+	              <i class="material-icons opacity-10">person</i>
+	            </div>
+	          
+	          <span class="nav-link-text ms-1">회원정보</span>
+	        </a>
+	      </li>
+    	</c:if>
+    	
     </ul>
   </div>

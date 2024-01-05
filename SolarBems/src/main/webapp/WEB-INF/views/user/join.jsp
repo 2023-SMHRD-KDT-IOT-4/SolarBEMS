@@ -55,18 +55,36 @@
                     Solar BEMS
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link me-2" href="${contextPath}/user/join">
-                    <i class="fa fa-user-plus text-dark me-1"></i>
-                    회원가입
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-2" href="${contextPath}/user/login">
-                    <i class="fa fa-sign-in text-dark text-dark me-1" aria-hidden="true"></i>
-                    로그인
-                  </a>
-                </li>
+
+               	<c:if test="${empty sessionScope.user }">
+	                <li class="nav-item">
+	                  <a class="nav-link me-2" href="${contextPath}/user/login">
+	                    <i class="fa fa-sign-in text-dark text-dark me-1" aria-hidden="true"></i>
+	                    	로그인
+	                  </a>
+	                </li>
+	                <li class="nav-item">
+	                  <a class="nav-link me-2" href="${contextPath}/user/join">
+	                    <i class="fa fa-user-plus text-dark me-1"></i>
+	                    	회원가입
+	                  </a>
+	                </li>
+                </c:if>
+               	<c:if test="${!empty sessionScope.user }">
+	                <li class="nav-item">
+	                  <a class="nav-link me-2" href="${contextPath}/user/login">
+	                    <i class="fa fa-sign-in text-dark text-dark me-1" aria-hidden="true"></i>
+	                    	로그아웃
+	                  </a>
+	                </li>
+	                <li class="nav-item">
+	                  <a class="nav-link me-2" href="${contextPath}/user/user_update">
+	                    <i class="fa fa-user-plus text-dark me-1"></i>
+	                    	회원정보
+	                  </a>
+	                </li>
+                </c:if>
+                
               </ul>
             </div>
           </div>

@@ -56,18 +56,36 @@
                     Solar BEMS
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link me-2" href="${contextPath}/user/join">
-                    <i class="fa fa-user-plus text-dark me-1"></i>
-                    회원가입
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-2" href="${contextPath}/user/login">
-                    <i class="fa fa-sign-in text-dark text-dark me-1" aria-hidden="true"></i>
-                    로그인
-                  </a>
-                </li>
+                
+               	<c:if test="${empty sessionScope.user }">
+	                <li class="nav-item">
+	                  <a class="nav-link me-2" href="${contextPath}/user/login">
+	                    <i class="fa fa-sign-in text-dark text-dark me-1" aria-hidden="true"></i>
+	                    	로그인
+	                  </a>
+	                </li>
+	                <li class="nav-item">
+	                  <a class="nav-link me-2" href="${contextPath}/user/join">
+	                    <i class="fa fa-user-plus text-dark me-1"></i>
+	                    	회원가입
+	                  </a>
+	                </li>
+                </c:if>
+               	<c:if test="${!empty sessionScope.user }">
+	                <li class="nav-item">
+	                  <a class="nav-link me-2" href="${contextPath}/user/login">
+	                    <i class="fa fa-sign-in text-dark text-dark me-1" aria-hidden="true"></i>
+	                    	로그아웃
+	                  </a>
+	                </li>
+	                <li class="nav-item">
+	                  <a class="nav-link me-2" href="${contextPath}/user/user_update">
+	                    <i class="fa fa-user-plus text-dark me-1"></i>
+	                    	회원정보
+	                  </a>
+	                </li>
+                </c:if>
+                
               </ul>
             </div>
           </div>
@@ -93,15 +111,15 @@
               </div>
               <!-- 로그인 입력폼 id, pw -->
               <div class="card-body">
-                <form role="form"  class="text-start">
+                <form role="form" id="loginForm" class="text-start" action="${contextPath}/user/login" method="post">
 
                   <div class="input-group input-group-lg input-group-outline my-3">
                     <label class="form-label">아이디</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" id="userId" name="userId">
                   </div>
                   <div class="input-group input-group-outline mb-3">
                     <label class="form-label">비밀번호</label>
-                    <input type="password" class="form-control">
+                    <input type="password" class="form-control" id="userPw" name="userPw">
                   </div>
 
                   <!-- 아이디 기억 체크박스
@@ -110,7 +128,7 @@
                     <label class="form-check-label mb-0 ms-3" for="rememberMe">Remember me</label>
                   </div> -->
                   <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 my-2 mb-2">
+                    <button type="button" class="btn bg-gradient-primary w-100 my-2 mb-2" id="loginBtn">
                       로그인
                     </button>
                   </div>
@@ -151,6 +169,7 @@
 
   <!-- Solar Files  -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script type="text/javascript" src="${contextPath}/resources/js/user.js"></script>
   
   </body>
 </html>

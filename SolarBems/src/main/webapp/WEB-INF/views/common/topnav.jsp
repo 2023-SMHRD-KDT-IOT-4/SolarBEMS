@@ -40,21 +40,36 @@
         </a>
       </li> -->
 
-      <!-- 로그인 li -->
+		<c:if test="${empty sessionScope.user }">
       <li class="nav-item d-flex align-items-center mx-2">
         <a href="${contextPath}/user/login" class="nav-link text-body font-weight-bold px-0">
           <i class="fa fa-sign-in text-dark" aria-hidden="true"></i>
           <span class="d-sm-inline d-none">로그인</span>
         </a>
       </li>
-      <!-- 회원가입 li -->
       <li class="nav-item d-flex align-items-center mx-2">
         <a href="${contextPath}/user/join" class="nav-link text-body font-weight-bold px-0">
           <i class="fa fa-user-plus text-dark"></i>
           <span class="d-sm-inline d-none">회원가입</span>
         </a>
       </li>
-
+		</c:if>
+		
+		<c:if test="${!empty sessionScope.user }">
+      <li class="nav-item d-flex align-items-center mx-2">
+        <a href="${contextPath}/user/logout" class="nav-link text-body font-weight-bold px-0">
+          <i class="fa fa-sign-in text-dark" aria-hidden="true"></i>
+          <span class="d-sm-inline d-none">로그아웃</span>
+        </a>
+      </li>
+      <li class="nav-item d-flex align-items-center mx-2">
+        <a href="${contextPath}/user/user_update" class="nav-link text-body font-weight-bold px-0">
+          <i class="fa fa-user-plus text-dark"></i>
+          <span class="d-sm-inline d-none">회원정보</span>
+        </a>
+      </li>
+		</c:if>
+		
     </ul>
   </div>
 </div>

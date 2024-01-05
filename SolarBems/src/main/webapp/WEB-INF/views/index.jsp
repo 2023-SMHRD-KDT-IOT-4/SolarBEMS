@@ -211,7 +211,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
   <!-- solar chart func -->
-  <script src="${contextPath}/resources/js/solar_chart_index.js"></script>
+  <script type="text/javascript" src="${contextPath}/resources/js/solar_chart_index.js"></script>
 </body>
 
 </html>

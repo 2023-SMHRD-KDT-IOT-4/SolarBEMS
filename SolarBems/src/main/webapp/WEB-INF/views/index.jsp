@@ -38,7 +38,7 @@
   </aside>
 
   <main class="main-content border-radius-lg ">
-    <!-- topnav Fetch by assets/js/fetch_template.js -->
+
     <nav id="topnav" class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" data-scroll="true">
       <jsp:include page="common/topnav.jsp" />
     </nav>

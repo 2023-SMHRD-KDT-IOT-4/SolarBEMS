@@ -29,13 +29,13 @@
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
-  <!-- sidenav  Fetch by assets/js/fetch_template.js -->
+
   <aside id="sidenav-main" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark">
   	<jsp:include page="../common/sidenav.jsp" />
   </aside>
 
   <main class="main-content border-radius-lg ">
-    <!-- topnav Fetch by assets/js/fetch_template.js -->        
+
     <nav id="topnav" class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" data-scroll="true">
     	<jsp:include page="../common/topnav.jsp" />
     </nav>

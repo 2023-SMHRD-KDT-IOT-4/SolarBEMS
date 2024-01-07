@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.smhrd.solar.mapper.BemsMapper">
+  
+		<insert id="linkDevice" parameterType="linkDevice">
+			INSERT INTO device_linked(user_id, dvc_id, dvcl_name, dvcl_loc, pin_id)
+			VALUES(#{userId}, #{dvcId},#{dvclName},#{dvclLoc}, #{pinId})
+		</insert>
+	
+		<select id="getLinkedList" resultType="linkDevice">
+			SELECT d1.link_id, d1.user_id, d1.dvc_id, d1.dvcl_name, d1.dvcl_loc, d1.pin_id, d1.linked_at, 
+				d2.dvc_type_code, d2.dvc_type_name, d2.dvc_elec_code, d2.dvc_power_code, d2.dvc_power_name
+			FROM device_linked d1 
+			    INNER JOIN device_info d2 ON d1.dvc_id = d2.dvc_id
+			WHERE user_id = #{userId}
+		</select>
+	
+		<select id="getLinkedDevice" resultType="linkDevice">
+			SELECT d1.link_id, d1.user_id, d1.dvc_id, d1.dvcl_name, d1.dvcl_loc, d1.pin_id, d1.linked_at, 
+				d2.dvc_type_code, d2.dvc_type_name, d2.dvc_elec_code, d2.dvc_power_code, d2.dvc_power_name
+			FROM device_linked d1 
+			    INNER JOIN device_info d2 ON d1.dvc_id = d2.dvc_id
+			WHERE link_id = #{linkId}
+		</select>
+	
+		<update id="updateLinkedDevice" parameterType="linkDevice">
+			UPDATE device_linked
+			SET
+			    dvcl_name = #{dvclName}, 
+			    dvcl_loc = #{dvclLoc} 
+			WHERE link_id = #{linkId}
+		</update>
+	
+		<delete id="deleteLinkedDevice">
+			DELETE FROM device_linked
+			WHERE link_id = #{linkId}
+		</delete>
+
+  </mapper>

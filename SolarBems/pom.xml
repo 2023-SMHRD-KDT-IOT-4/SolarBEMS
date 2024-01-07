@@ -169,7 +169,6 @@
 	
 	
 	
-	
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

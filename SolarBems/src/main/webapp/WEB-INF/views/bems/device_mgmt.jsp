@@ -41,20 +41,18 @@
     </nav>
 
     <!-- 연동해제 Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="linkOffModal" tabindex="-1" role="dialog" aria-labelledby="linkOffModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title font-weight-normal" id="exampleModalLabel">디바이스 연동해제</h5>
+            <h5 class="modal-title font-weight-normal" id="linkOffModalLabel">디바이스 연동해제</h5>
             <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            정말 디바이스 별칭1을 연동해제 하시겠습니까?
-          </div>
+          <div class="modal-body" id="linkOffModalBody"></div>
           <div class="modal-footer">
-            <button type="button" class="btn bg-gradient-primary">연동해제</button>
+            <button type="button" id="linkOffBtn" class="btn bg-gradient-primary">연동해제</button>
             <button type="button" class="btn bg-gradient-dark" data-bs-dismiss="modal">취소</button>
           </div>
         </div>
@@ -64,15 +62,6 @@
 
     <!-- Start Content -->
     <div class="container-fluid py-2">
-      <div class="row">
-        <div class="col-lg-7 position-relative z-index-2">
-          <div class="card card-plain mb-1">
-            <div class="card-body p-0">
-              <h3 class="font-weight-bolder">디바이스 관리</h3>
-            </div>
-          </div> <!-- End card  -->
-        </div>
-      </div><!-- End row -->
 
       <!--  디바이스 리스트 , 디바이스제어 -->
       <div class="row" >
@@ -98,149 +87,103 @@
             <div class="card-body p-4 ">
               <div class="card">
                 <div class="table-responsive">
-                  <table class="table table-hover align-items-center mb-0 text-danger">
-                    <thead >
-                      <tr style="border-width:1px; border-color: rgb(128, 128, 128); background-color: rgb(66, 139, 202);">
-                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">No</th>
-                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">디바이스 이름</th>
-                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">타입</th>
-                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">운전상태</th>
-                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">설치위치</th>
-                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">디바이스 제어</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-
-                      <tr class="bg-gray">
-                        <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">1</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">디바이스 별칭1</span>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          <span class="text-dark text-md font-weight-normal">LED</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">ON</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">사무실_출입</span>
-                        </td>
-                        <td class="align-middle text-center">
-
-                          <a class="btn btn-link text-info text-gradient px-1 mb-0" href="javascript:;">
-                            <i class="material-icons">settings_remote</i>
-                            디바이스 제어
-                          </a>
-                          <a class="btn btn-link text-danger text-gradient px-1 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-param="1">
-                            <i class="material-icons">link_off</i>
-                            연동해제
-                          </a>
-                          <a class="btn btn-link text-dark px-1 mb-0" href="${contextPath}/bems/device_update">
-                            <i class="material-icons">edit</i>
-                            수정
-                          </a>
-
-                        </td>
-                      </tr>
-
-                      <tr class="">
-                        <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">2</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">디바이스 별칭2</span>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          <span class="text-dark text-md font-weight-normal">LED</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">ON</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">사무실_창가</span>
-                        </td>
-                        <td class="align-middle text-center">
-
-                          <a class="btn btn-link text-info text-gradient px-1 mb-0" href="javascript:;">
-                            <i class="material-icons">settings_remote</i>
-                            디바이스 제어
-                          </a>
-                          <a class="btn btn-link text-danger text-gradient px-1 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-param="1">
-                            <i class="material-icons">link_off</i>
-                            연동해제
-                          </a>
-                          <a class="btn btn-link text-dark px-1 mb-0" href="${contextPath}/bems/device_update">
-                            <i class="material-icons">edit</i>
-                            수정
-                          </a>
-
-                        </td>
-                      </tr>
-
-                      <tr class="">
-                        <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">3</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">디바이스 별칭3</span>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          <span class="text-dark text-md font-weight-normal">냉난방기</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">ON</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">회의실</span>
-                        </td>
-                        <td class="align-middle text-center">
-
-                          <a class="btn btn-link text-info text-gradient px-1 mb-0" href="javascript:;">
-                            <i class="material-icons">settings_remote</i>
-                            디바이스 제어
-                          </a>
-                          <a class="btn btn-link text-danger text-gradient px-1 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-param="1">
-                            <i class="material-icons">link_off</i>
-                            연동해제
-                          </a>
-                          <a class="btn btn-link text-dark px-1 mb-0" href="${contextPath}/bems/device_update">
-                            <i class="material-icons">edit</i>
-                            수정
-                          </a>
-
-                        </td>
-                      </tr>
-
-              
-                    </tbody>
-                  </table>
-                </div>
-              </div><!-- card -->
-            </div><!-- card-body -->
+                	<input type="hidden" id="linkOffLinkId" value="">
+                	<input type="hidden" id="linkOffNo" value="">
+                	
+                	<c:choose>
+                		<c:when test="${empty linkedList}">
+	                    <h4 class="text-dark"> 연동 디바이스 없습니다.</h4>
+                		</c:when>
+                		
+                		<c:otherwise>
+		                  <table class="table table-hover align-items-center mb-0 text-danger">
+		                    <thead >
+		                      <tr style="border-width:1px; border-color: rgb(128, 128, 128); background-color: rgb(66, 139, 202);">
+		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">No</th>
+		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">디바이스 이름</th>
+		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">타입</th>
+		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">운전상태</th>
+		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">설치위치</th>
+		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder" colspan="3">디바이스 제어</th>
+		                      </tr>
+		                    </thead>
+		                    <tbody id="linkedDviceBody">
+		
+												<c:forEach items="${linkedList}" var="vo" varStatus="status">
+		                      <tr class="bg-gray" id="deviceTr${status.count}">
+		                        <td class="align-middle text-center">
+		                          <span class="text-dark text-md font-weight-normal">${status.count}</span>
+		                        </td>
+		                        <td class="align-middle text-center">
+		                          <span class="text-dark text-md font-weight-normal">${vo.dvclName}</span>
+		                        </td>
+		                        <td class="align-middle text-center text-sm">
+		                          <span class="text-dark text-md font-weight-normal">LED</span>
+		                        </td>
+		                        <td class="align-middle text-center">
+		                          <span class="text-dark text-md font-weight-normal">ON</span>
+		                        </td>
+		                        <td class="align-middle text-center">
+		                          <span class="text-dark text-md font-weight-normal">${vo.dvclLoc}</span>
+		                        </td>
+		                        <td>
+		                          <a class="btn btn-link text-info text-gradient px-1 mb-0"
+		                          	onclick="javascript:controlDevice('${vo.pinId}','${vo.dvclName}', '${vo.dvcPowerName}')">
+		                          	<input type="hidden" name="pinId" value="${vo.pinId}" />
+		                            <i class="material-icons">settings_remote</i>
+		                            디바이스 제어
+		                          </a>
+	                          </td>
+	                          <td>
+		                          <a class="btn btn-link text-danger text-gradient px-1 mb-0 modalBtn" 
+		                          	data-bs-toggle="modal" data-bs-target="#linkOffModal" 
+		                          	data-bs-id="${vo.linkId}" data-bs-param="${vo.dvclName}"
+		                          	data-bs-no="${status.count}">
+		                            <i class="material-icons">link_off</i>
+		                            연동해제
+		                          </a>
+		                         </td>
+		                         <td>
+		                          <a class="btn btn-link text-dark px-1 mb-0" href="${contextPath}/bems/device_update/${vo.linkId}">
+		                            <i class="material-icons">edit</i>
+		                            수정
+		                          </a>
+		
+		                        </td>
+		                      </tr>
+												</c:forEach>
+		                    </tbody>
+		                    
+		                  </table>                		
+                		</c:otherwise>
+                	</c:choose>
+                  
+                </div><!-- End <div class="table-responsive"> -->
+              </div><!-- End card -->
+            </div><!-- End card-body -->
 
           </div><!-- cardDiv -->
-        </div><!-- End col8 디바이스 리스트 -->
+        </div><!-- End col9 디바이스 리스트 -->
 
         <!-- 선택한 디바이스 제어 -->
-        <div class="col-md-3 ">
+        <div class="col-md-3" id="controlDiv">
           <div class="card mb-4">
 
-            <div class="card-header pb-0 px-3 bg-gray-200">
-              <div class="row">
+            <div class="card-header pb-2 px-3 bg-gray-200">
+              <div class="row"`>
                 <div class="col-md-8">
                   <h6>디바이스 제어</h6>
                 </div>
                 <div class="col-md-4 d-flex justify-content-start justify-content-md-end align-items-center">
-                  <button type="button" class="btn bg-gradient-dark btn-sm">닫기</button>
+                  <button type="button" id="closeControlBtn" class="btn bg-gradient-dark btn-sm">닫기</button>
                 </div>
                 </div>
               </div>
 
             <!-- 제어 바디 -->
             <div class="card-body p-3 ">
-              <h6 class="text-uppercase text-body text-md font-weight-bolder mb-3">디바이스 별칭1</h6>
+              <h6 id="deviceName" class="text-uppercase text-body text-md font-weight-bolder mb-3">
+              </h6>
               
               <form>
                 <div class="row">
@@ -248,15 +191,16 @@
                   <div class="col-md-5 d-flex justify-content-center align-items-center mt-3">
                     <!-- 운전상태 토글 -->
                    <div class="form-check form-switch">
-                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
-                     <label class="form-check-label" for="flexSwitchCheckDefault">운전OFF/ON</label>
+                     <input class="form-check-input" type="checkbox" id="powerStatus" checked>
+                     <label class="form-check-label" for="powerStatus">운전OFF/ON</label>
                    </div>
                   </div>
                   <!-- 설정값 -->
                   <div class="col-md-7 d-flex justify-content-center ">
-                    <div class="input-group input-group-static w-50">
+                    <div class="input-group input-group-static w-60">
                       <label >설정값</label>
-                      <input type="number" class="form-control" value="20"><!-- disabled -->
+                      <label id="powerType"></label>
+                      <input type="number" class="form-control" id="poewrVal" value="20"><!-- disabled -->
                     </div>
                   </div>
                 </div>
@@ -267,21 +211,6 @@
                 </div>
               </div>
             </form>
-            
-            <!-- 디바이스 제어 성공유무 알림창 -->
-
-            <div class="alert alert-success alert-dismissible text-white fade show m-3" role="alert">
-              <span class="alert-text"><strong>성공</strong><br>디바이스 제어에 성공했습니다.</span>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="alert alert-danger alert-dismissible text-white fade show m-3" role="alert">
-                <span class="alert-text"><strong>실패</strong><br>디바이스 제어에 실패했습니다.</span>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
 
             </div><!-- 제어 바디 -->
           </div>
@@ -316,6 +245,8 @@
   
   <!-- Solar Files  -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
- 
+	<script src="${contextPath}/resources/js/bems_device_mgmt.js"></script>
+
+ 	</script>
   </body>
 </html>

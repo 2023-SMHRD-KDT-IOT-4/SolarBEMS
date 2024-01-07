@@ -42,89 +42,65 @@
     </nav>
 
     <!-- 디바이스 연동 -->
-    <div class="container-fluid py-2">
-      <div class="row">
-        <div class="col-lg-12 position-relative z-index-2 text-center">
-          <h3 class="font-weight-bolder mb-4">디바이스 관리</h3>
-        </div>
-      </div>
+    <div class="container-fluid mt-5">
 
-      <div class="align-items-start ">
+      <div class="align-items-start">
         <span class="mask bg-gray-50 opacity-6"></span>
         <div class="container my-auto">
           <div class="row">
-            <div class="col-lg-4 col-md-8 col-12 mx-auto">
+            <div class="col-lg-10 mx-auto">
               <div class="card z-index-0 fadeIn3 fadeInBottom">
+
                 <div class="card-header p-1 position-relative mt-n4 mx-3 z-index-2">
                   <div class="bg-gradient-info shadow-primary border-radius-lg py-1 pe-1">
                     <h4 class="text-white font-weight-bolder text-center mt-1 mb-1">
-                      디바이스 연동
+                      트래킹 된 디바이스 리스트
                     </h4>
                   </div>
-                </div>
-                <!-- 디바이스 연동 폼 -->
-                <div class="card-body pb-0 pt-3">
-                  <form role="form"  class="text-start">
-                    <div class="input-group input-group-static mb-4">
-                      <label for="exampleFormControlSelect1" class="ms-0">디바이스 타입</label>
-                      <select class="form-control" id="exampleFormControlSelect1">
-                        <option>LED</option>
-                        <option>냉난방기</option>
-                      </select>
-                    </div>
-                    <!-- 디바이스 타입 추후. 드랍다운 구현(이미지 첨부)
-                    <div class="dropdown">
-                      <a href="#" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
-                          <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/icons/flags/US.png" /> 디바이스 타입
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/icons/flags/DE.png" /> Deutsch
-                              </a>
-                          </li>
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/icons/flags/GB.png" /> English(UK)
-                              </a>
-                          </li>
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/icons/flags/BR.png" /> Brasil
-                              </a>
-                          </li>
-                      </ul>
-                    </div> -->
+                </div><!-- End card-header -->
 
-                    <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">디바이스 이름</label>
-                      <input type="text" class="form-control" >
+                <div class="card-body pt-2 pb-4 ">
+                  <div class="card" id="linkDeviceDiv">
+                    <div class="table-responsive">
+                      <form id="linkDeviceForm" action="" method="post">
+                        <div id="deviceLenDiv" class="py-1">        
+                        </div>
+
+                        <table class="table table-hover align-items-center mb-0 text-danger">
+                          <thead>
+                            <tr style="border-width:1px; border-color: rgb(128, 128, 128); background-color: rgb(66, 139, 202);">
+                              <th class="text-center text-uppercase text-white text-md font-weight-bolder">
+                                <label class="text-white text-md font-weight-bolder">연동 전체선택</label>
+                                <input type="checkbox" id="chkLinkAll" name="chkLinkAll">
+                              </th>
+                              <th class="text-center text-uppercase text-white text-md font-weight-bolder">No</th>
+                              <th class="text-center text-uppercase text-white text-md font-weight-bolder">타입</th>
+                              <th class="text-center text-uppercase text-white text-md font-weight-bolder">핀번호</th>
+                            </tr>
+                          </thead>
+                          <tbody id="linkDviceBody"></tbody>
+                        </table>
+                      </form>
                     </div>
-                    <div class="input-group input-group-outline mb-1">
-                      <label class="form-label">디바이스 설치위치</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="text-center">
-                      <button type="button" class="btn bg-gradient-primary w-100 mt-3">
-                        연동하기
+                  </div><!-- End class="card" id="linkDviceDiv" -->
+                  
+                  <div class="card-footer text-center pt-4 pb-0">
+                    <input type="button" id="linkBtn" class="btn bg-gradient-primary" value="연동하기"> 
+                    <input type="button" id="retryLinkBtn" class="btn bg-gradient-warning" value="재연동" />
+                    <a href="${contextPath}/bems/device_mgmt">
+                      <button type="button" class="btn bg-gradient-dark">
+                        관리화면
                       </button>
-                    </div>
-                    <div class="card-footer text-center px-1 py-0">
-                      <input type="reset" class="btn bg-gradient-warning" value="리셋">
-                      <a href="./device_mgmt.html">
-                        <button type="button" class="btn bg-gradient-success">
-                          관리화면
-                        </button>
-                      </a>
-                    </div>
-                   
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+                    </a>
+                  </div>
+
+                </div><!-- End card-body -->     
+
+              </div><!-- End card -->
+            </div><!-- End col-lg-10 -->
+          </div><!-- End row -->
         </div><!-- End <div class="container my-auto"> -->
-      </div>
+      </div><!-- End <div class="align-items-start"> -->
       
 			<!-- include footer -->
 			<jsp:include page="../common/footer.jsp" />
@@ -152,6 +128,7 @@
   
   <!-- Solar Files  -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>  
+  <script src="${contextPath}/resources/js/bems_device_link.js"></script>
   
   </body>
 </html>

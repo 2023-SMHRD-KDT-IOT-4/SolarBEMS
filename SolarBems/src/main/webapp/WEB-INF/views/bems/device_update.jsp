@@ -42,12 +42,7 @@
     </nav>
 
     <!-- 디바이스 연동 -->
-    <div class="container-fluid py-2">
-      <div class="row">
-        <div class="col-lg-12 position-relative z-index-2 text-center">
-          <h3 class="font-weight-bolder mb-4">디바이스 관리</h3>
-        </div>
-      </div>
+    <div class="container-fluid py-2 mt-4">
 
       <div class="align-items-start ">
         <span class="mask bg-gray-50 opacity-6"></span>
@@ -64,61 +59,35 @@
                 </div>
                 <!-- 디바이스 연동 폼 -->
                 <div class="card-body pb-0 pt-3">
-                  <form role="form"  class="text-start">
+                
+                  <form role="form" class="text-start" action="${contextPath}/bems/device_update" method="post">
+                  	<input type="hidden" name="linkId" value="${dto.linkId}" />
                     <div class="input-group input-group-static mb-4">
-                      <label for="exampleFormControlSelect1" class="ms-0">디바이스 타입</label>
-                      <select class="form-control" id="exampleFormControlSelect1" disabled>
-                        <option selected>LED</option>
-                        <option >냉난방기</option>
-                      </select>
+                      <label >디바이스 타입</label>
+                      <input type="text" class="form-control" value="${dto.dvcTypeName}" disabled>
                     </div>
-                    <!-- 디바이스 타입 추후. 드랍다운 구현(이미지 첨부)
-                    <div class="dropdown">
-                      <a href="#" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
-                          <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/icons/flags/US.png" /> 디바이스 타입
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/icons/flags/DE.png" /> Deutsch
-                              </a>
-                          </li>
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/icons/flags/GB.png" /> English(UK)
-                              </a>
-                          </li>
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/icons/flags/BR.png" /> Brasil
-                              </a>
-                          </li>
-                      </ul>
-                    </div> -->
 
                     <div class="input-group input-group-static mb-2">
                       <label >디바이스 이름</label>
-                      <input type="text" class="form-control" value="디바이스 별칭1">
+                      <input type="text" class="form-control" name="dvclName"  value="${dto.dvclName}">
                     </div>
                     <div class="input-group input-group-static mb-2">
                       <label >디바이스 설치위치</label>
-                      <input type="text" class="form-control" value="사무실_출입">
+                      <input type="text" class="form-control" name="dvclLoc" value="${dto.dvclLoc}">
                     </div>
                     <div class="text-center">
-                      <button type="button" class="btn bg-gradient-primary w-100 mt-3">
-                        수정하기
-                      </button>
+                      <input type="submit" class="btn bg-gradient-primary w-100 mt-3" value="수정하기" />
                     </div>
                     <div class="card-footer text-center px-1 py-0">
                       <input type="reset" class="btn bg-gradient-warning" value="리셋">
                       <a href="${contextPath}/bems/device_mgmt">
-                        <button type="button" class="btn bg-gradient-success">
+                        <button type="button" class="btn bg-gradient-dark">
                           관리화면
                         </button>
                       </a>
                     </div>
-                   
                   </form>
+                  
                 </div>
               </div>
             </div>

@@ -7,21 +7,24 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-	    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-	    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/jsp?serverTimezone=UTC&amp;characterEncoding=UTF-8"/>
-	    <property name="username" value="root"/>
-	    <property name="password" value="1234"/>
+	  <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+	  <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/jsp?serverTimezone=UTC&amp;characterEncoding=UTF-8"/>
+	  <property name="username" value="root"/>
+	  <property name="password" value="1234"/>
 	</bean>	
+	
 	<!-- 2. DataSource : Spring 통해서 MySQL에 접근 -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
-	    <constructor-arg ref="hikariConfig"/>
+  	<constructor-arg ref="hikariConfig"/>
 	</bean>
+	
 	<!-- 3. MyBatis -->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
-	     <property name="dataSource" ref="dataSource"/>
-	     <!-- mybatis-config.xml => mybatis를 활용하기 위한 옵션 -->
-	     <property name="configLocation" value="classpath:/com/smhrd/solar/config/mybatis-config.xml"/>
-    </bean>
+	  <property name="dataSource" ref="dataSource"/>
+	  <!-- mybatis-config.xml => mybatis를 활용하기 위한 옵션 -->
+	  <property name="configLocation" value="classpath:/com/smhrd/solar/config/mybatis-config.xml"/>
+  </bean>
     
-    <mybatis-spring:scan base-package="com.smhrd.solar.mapper"/>		
+  <mybatis-spring:scan base-package="com.smhrd.solar.mapper"/>	
+  	
 </beans>

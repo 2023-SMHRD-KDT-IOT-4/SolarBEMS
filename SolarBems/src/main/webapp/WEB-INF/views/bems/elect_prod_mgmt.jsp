@@ -154,6 +154,7 @@
 	              <div class="card-footer d-flex justify-content-center align-items-center pb-0 pt-3">
 	                  <button type="button" class="btn bg-gradient-primary w-70" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-param="1">
 	                    전력제어 전환
+	                  </button>
                 </div>
               </div><!-- card-body -->
 

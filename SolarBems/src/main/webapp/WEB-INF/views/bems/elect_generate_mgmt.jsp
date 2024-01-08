@@ -41,11 +41,11 @@
     </nav>
 
     <!-- 전력제어 전환 Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="converModal" tabindex="-1" role="dialog" aria-labelledby="converModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title font-weight-normal" id="exampleModalLabel">전력제어 전환</h5>
+            <h5 class="modal-title font-weight-normal" id="converModalLabel">전력제어 전환</h5>
             <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -54,7 +54,7 @@
             정말 배터리전기 제어방식으로 전환 하시겠습니까?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn bg-gradient-primary">전환하기</button>
+            <button type="button" id="converBtn" class="btn bg-gradient-primary">전환하기</button>
             <button type="button" class="btn bg-gradient-dark" data-bs-dismiss="modal">취소</button>
           </div>
         </div>
@@ -81,7 +81,7 @@
 
             <div class="card-body px-4 pb-1">
               <div class="d-flex justify-content-center align-items-center">
-                <h4 class="text-dark">전력제어 상태 : 일반전기</h4>
+                <h4 class="text-dark" id="elecStatusH4">전력제어 상태 : </h4>
               </div>
               <hr class="dark horizontal my-1">
               <div class="row">
@@ -93,11 +93,11 @@
                   <div class="progress-wrapper">
                     <div class="progress-info">
                       <div class="progress-percentage">
-                        <span class="text-sm font-weight-normal">태양광 배터리 잔량 : 90%</span>
+                        <span class="text-sm font-weight-normal" id="remainBatteryAmount">태양광 배터리 잔량 : </span>
                       </div>
                     </div>
                     <div class="progress" style="height: 20px;">
-                      <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%; height: 20px;"></div>
+                      <div class="progress-bar" id="remainBatteryBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 90%; height: 20px;"></div>
                     </div>
                   </div>
 
@@ -105,12 +105,14 @@
 
                 <div class="col-md-6 d-flex justify-content-center align-items-center ps-4">
                   <form>
+                  	<input type="hidden" id="sendPinId" value="">
+                  	<input type="hidden" id="userId" value="${user.userId}">
                     <h6>전력제어 상태 전환</h6>
                     <!-- 전기 사용상태 토글 -->
                     <div class="togglebutton form-check form-switch">
                       <!-- disabled -->
-                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked>
-                      <label class="form-check-label" for="flexSwitchCheckDefault">배터리전기 / 일반전기</label>
+                      <input class="form-check-input" type="checkbox" id="elecStatusCheckbox" checked>
+                      <label class="form-check-label" for="elecStatusCheckbox">배터리전기 / 일반전기</label>
                     </div>
                   </form>
                 </div>
@@ -120,7 +122,7 @@
               <hr class="dark horizontal my-1">
 
 	              <div class="card-footer d-flex justify-content-center align-items-center pb-0 pt-3">
-	                  <button type="button" class="btn bg-gradient-primary w-70" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-param="1">
+	                  <button type="button" class="btn bg-gradient-primary w-70" data-bs-toggle="modal" data-bs-target="#converModal" data-bs-param="1">
 	                    전력제어 전환
 	                  </button>
                 </div>
@@ -155,6 +157,7 @@
   
   <!-- Solar Files  -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="${contextPath}/resources/js/bems_generate_mgmt.js"></script>
   
   </body>
 </html>

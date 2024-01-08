@@ -191,7 +191,7 @@
                   	<input type="hidden" id="sendPowerStatus" value="" />
                     <!-- 운전상태 토글 -->
                    <div class="form-check form-switch">
-                     <input class="form-check-input" type="checkbox" id="powerStatus" value="1" checked >
+                     <input class="form-check-input" type="checkbox" id="powerStatus" checked="false">
                      <label class="form-check-label" for="powerStatus">운전OFF/ON</label>
                    </div>
                   </div>
@@ -247,6 +247,5 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="${contextPath}/resources/js/bems_device_mgmt.js"></script>
 
- 	</script>
   </body>
 </html>

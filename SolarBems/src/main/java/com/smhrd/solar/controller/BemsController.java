@@ -1,7 +1,5 @@
 package com.smhrd.solar.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -39,7 +37,11 @@ public class BemsController {
 
 	// 전력 생산량 관리 페이지
 	@RequestMapping(value = "/elect_generate_mgmt", method = RequestMethod.GET)
-	public String elecGenerateMgmtPage() {
+	public String elecGenerateMgmtPage(HttpSession session) {
+		
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		if(user == null)
+			return "redirect:/user/login";
 		
 		return "bems/elect_generate_mgmt";
 	}

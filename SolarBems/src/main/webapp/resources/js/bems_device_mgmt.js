@@ -2,7 +2,6 @@ $(document).ready(function() {
 	console.log('bems_device_mgmt');
 	
 	const controlDiv = $('#controlDiv');
-	controlDiv.hide();
 
   // 관리화면 >  연동해제 아이콘 클릭 시 모달창 출력
   $('#linkOffModal').on('show.bs.modal', e => {
@@ -77,10 +76,9 @@ $(document).ready(function() {
 	console.log(JSON.stringify(sendData));
 
 	// 디바이스 제어 json Data ==> To Flask API 
-  const apiIp = 'http://172.30.1.89:5000';
   $.ajax({
     type : 'POST',
-    url : apiIp + '/api/device/control',
+    url : flaskIp + '/api/device/control',
     contentType: 'application/json; charset=utf-8',
     data : JSON.stringify(sendData),
     dataType : 'json',

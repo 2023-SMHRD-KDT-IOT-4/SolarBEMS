@@ -166,7 +166,7 @@
         </div><!-- End col9 디바이스 리스트 -->
 
         <!-- 선택한 디바이스 제어 -->
-        <div class="col-md-3" id="controlDiv">
+        <div class="col-md-3" id="controlDiv" style="display: none;">
           <div class="card mb-4">
 
             <div class="card-header pb-2 px-3 bg-gray-200">
@@ -245,6 +245,7 @@
   
   <!-- Solar Files  -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="${contextPath}/resources/js/common_api.js"></script>
 	<script src="${contextPath}/resources/js/bems_device_mgmt.js"></script>
 
   </body>

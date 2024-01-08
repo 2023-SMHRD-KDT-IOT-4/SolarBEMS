@@ -16,12 +16,11 @@ $(document).ready(function() {
 
 // 전력 생산량 및 제어상태 정보(json data)t From Flask API
 const getElecGenerate = () => {
-  const apiIp = 'http://172.30.1.89:5000';
-
   $.ajax({
     type : 'POST',
-    url : apiIp + '/api/device/linked',
+    url : flaskIp + '/api/device/linked',
     dataType : 'json',
+    contentType : 'application/json; charset:UTF-8',
     success : data => {
       if(Object.keys(data.device).length === 0) {
       	alert('연동정보가 없습니다');
@@ -30,7 +29,7 @@ const getElecGenerate = () => {
       const dvcList = data.device;
       const deviceLen = dvcList != null ? Object.keys(dvcList).length : 0;
 
-      // 필터 태양광패널만
+      // 필터 태양광패널만('dvc001'
       const solarList = dvcList.filter( dvc => dvc.dvcId == 'dvc001');
 			const solarObj = Object.assign({}, solarList)[0];
 			$('#sendPinId').val(solarObj.pinId);
@@ -77,7 +76,6 @@ const getElecGenerate = () => {
 	const sendToFlask = elecStatus => {
 	
 		// 디바이스 제어 json Data ==> To Flask API 
-  	const apiIp = 'http://172.30.1.89:5000';
 		const userId = $('#userId').val();
 		const pinId = $('#sendPinId').val(); 
 		
@@ -94,7 +92,7 @@ const getElecGenerate = () => {
 
 	  $.ajax({
 	    type : 'POST',
-	    url : apiIp + '/api/device/control',
+	    url : flaskIp + '/api/device/control',
 	    contentType: 'application/json; charset=utf-8',
 	    data : JSON.stringify(sendData),
 	    dataType : 'json',

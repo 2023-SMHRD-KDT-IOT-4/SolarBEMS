@@ -157,6 +157,7 @@
   
   <!-- Solar Files  -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="${contextPath}/resources/js/common_api.js"></script>
   <script src="${contextPath}/resources/js/bems_generate_mgmt.js"></script>
   
   </body>

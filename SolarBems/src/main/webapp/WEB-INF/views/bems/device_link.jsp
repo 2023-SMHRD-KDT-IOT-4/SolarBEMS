@@ -128,7 +128,8 @@
   <script src="${contextPath}/resources/js/material-dashboard.min.js?v=3.1.0"></script>
   
   <!-- Solar Files  -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>  
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="${contextPath}/resources/js/common_api.js"></script>  
   <script src="${contextPath}/resources/js/bems_device_link.js"></script>
   
   </body>

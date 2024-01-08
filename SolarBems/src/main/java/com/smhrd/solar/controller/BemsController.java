@@ -38,10 +38,10 @@ public class BemsController {
 	}
 
 	// 전력 생산량 관리 페이지
-	@RequestMapping(value = "/elect_prod_mgmt", method = RequestMethod.GET)
-	public String elecProdMgmtPage() {
+	@RequestMapping(value = "/elect_generate_mgmt", method = RequestMethod.GET)
+	public String elecGenerateMgmtPage() {
 		
-		return "bems/elect_prod_mgmt";
+		return "bems/elect_generate_mgmt";
 	}
 	
 	// 디바이스 제어 및 관리 페이지

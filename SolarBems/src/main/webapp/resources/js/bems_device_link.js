@@ -71,7 +71,7 @@ $(document).ready(function() {
 
 // 연동된 디바이스 json list From Flask API
 const getLinkDeviceList = () => {
-  const apiIp = 'http://192.168.219.100:5000';
+  const apiIp = 'http://172.30.1.89:5000';
 
   $.ajax({
     type : 'POST',

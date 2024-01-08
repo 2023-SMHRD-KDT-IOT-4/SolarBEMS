@@ -87,6 +87,7 @@
             <div class="card-body p-4 ">
               <div class="card">
                 <div class="table-responsive">
+                	<input type="hidden" id="userId" value="${user.userId}">
                 	<input type="hidden" id="linkOffLinkId" value="">
                 	<input type="hidden" id="linkOffNo" value="">
                 	
@@ -129,7 +130,6 @@
 		                        <td>
 		                          <a class="btn btn-link text-info text-gradient px-1 mb-0"
 		                          	onclick="javascript:controlDevice('${vo.pinId}','${vo.dvclName}', '${vo.dvcPowerName}')">
-		                          	<input type="hidden" name="pinId" value="${vo.pinId}" />
 		                            <i class="material-icons">settings_remote</i>
 		                            디바이스 제어
 		                          </a>
@@ -170,7 +170,7 @@
           <div class="card mb-4">
 
             <div class="card-header pb-2 px-3 bg-gray-200">
-              <div class="row"`>
+              <div class="row">
                 <div class="col-md-8">
                   <h6>디바이스 제어</h6>
                 </div>
@@ -184,14 +184,14 @@
             <div class="card-body p-3 ">
               <h6 id="deviceName" class="text-uppercase text-body text-md font-weight-bolder mb-3">
               </h6>
-              
               <form>
                 <div class="row">
-
                   <div class="col-md-5 d-flex justify-content-center align-items-center mt-3">
+                  	<input type="hidden" id="sendPinId" value="" />
+                  	<input type="hidden" id="sendPowerStatus" value="" />
                     <!-- 운전상태 토글 -->
                    <div class="form-check form-switch">
-                     <input class="form-check-input" type="checkbox" id="powerStatus" checked>
+                     <input class="form-check-input" type="checkbox" id="powerStatus" value="1" checked >
                      <label class="form-check-label" for="powerStatus">운전OFF/ON</label>
                    </div>
                   </div>
@@ -207,7 +207,7 @@
 
               <div class="row">
                 <div class="col d-flex justify-content-center mt-4">
-                  <button type="button" class="btn bg-gradient-info w-70">제어 전송</button>
+                  <button type="button" id="controlExecuteBtn" class="btn bg-gradient-info w-70">제어 전송</button>
                 </div>
               </div>
             </form>

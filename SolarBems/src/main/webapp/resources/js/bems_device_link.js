@@ -73,22 +73,30 @@ $(document).ready(function() {
 
 // 연동된 디바이스 json list From Flask API
 const getLinkDeviceList = () => {
-	console.log('getLinkDeviceList');
+
+	const arduId = $('#arduId').val();
+	console.log('getLinkDeviceList ardu' + arduId);
+  let reqData = {
+		"clientType": clientType,
+ 		"arduId" : arduId,
+  }
+  console.log(reqData);
+
   $.ajax({
-    type : 'GET',
+    type : 'POST',
     url : flaskIp + '/api/device/linked',
+    data: JSON.stringify(reqData),
     dataType : 'json',
     contentType : 'application/json; charset:UTF-8',
     success : data => {
 			
 			console.log(data);
       // 연동된 디바이스가 한개도 없을 경우
-      const deviceLen = Object.keys(data.device).length;
-      if(deviceLen == 0) {
+      if(Object.keys(data).length == 0) {
         emptyLinkedDevice();
+        return;
       }
 
-			$('#arduId').val(data.clientId);
       let devices = data.device; // 연동된 디바이스 json list
       $('#deviceLenDiv').html('');
       $('#deviceLenDiv').append('<h6>트래킹 디바이스(총'+devices.length+'개)</h6>');
@@ -96,7 +104,7 @@ const getLinkDeviceList = () => {
 
     },
     error : () => {
-      alert('getLinkDeviceList error');
+      alert('디바이스 트래킹 실패 error');
       emptyLinkedDevice();
     }
   });

@@ -11,7 +11,7 @@
 		</select>
 
 		<select id="getUser" parameterType="String" resultType="user">
-			SELECT	user_id, user_nick, building_name, room_number, joined_at
+			SELECT	user_id, user_nick, building_name, room_number, ardu_id, joined_at
 			FROM user_info
 			WHERE user_id = #{userId}
 		</select>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
     
@@ -54,7 +54,7 @@
                 <div class="card-header p-1 position-relative mt-n4 mx-3 z-index-2">
                   <div class="bg-gradient-info shadow-primary border-radius-lg py-1 pe-1">
                     <h4 class="text-white font-weight-bolder text-center mt-1 mb-1">
-                      트래킹 된 디바이스 리스트
+                      트래킹 디바이스 리스트
                     </h4>
                   </div>
                 </div><!-- End card-header -->
@@ -63,7 +63,7 @@
                   <div class="card" id="linkDeviceDiv">
                     <div class="table-responsive">
                       <form id="linkDeviceForm" action="" method="post">
-                       	<input type="hidden" id="arduId" value="" />
+                       	<input type="hidden" id="arduId" value="${user.arduId}" />
                         <div id="deviceLenDiv" class="py-1">        
                         </div>
 

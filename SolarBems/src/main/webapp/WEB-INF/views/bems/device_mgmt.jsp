@@ -105,7 +105,7 @@
 		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">타입</th>
 		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">운전상태</th>
 		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">설치위치</th>
-		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder" colspan="3">디바이스 제어</th>
+		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">디바이스 제어</th>
 		                      </tr>
 		                    </thead>
 		                    <tbody id="linkedDviceBody">
@@ -133,8 +133,6 @@
 		                            <i class="material-icons">settings_remote</i>
 		                            디바이스 제어
 		                          </a>
-	                          </td>
-	                          <td>
 		                          <a class="btn btn-link text-danger text-gradient px-1 mb-0 modalBtn" 
 		                          	data-bs-toggle="modal" data-bs-target="#linkOffModal" 
 		                          	data-bs-id="${vo.linkId}" data-bs-param="${vo.dvclName}"
@@ -142,8 +140,6 @@
 		                            <i class="material-icons">link_off</i>
 		                            연동해제
 		                          </a>
-		                         </td>
-		                         <td>
 		                          <a class="btn btn-link text-dark px-1 mb-0" href="${contextPath}/bems/device_update/${vo.linkId}">
 		                            <i class="material-icons">edit</i>
 		                            수정

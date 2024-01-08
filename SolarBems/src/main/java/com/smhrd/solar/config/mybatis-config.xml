@@ -12,6 +12,8 @@
 	<typeAliases>
   	<typeAlias type="com.smhrd.solar.model.UserDTO" alias="user"/>
   	<typeAlias type="com.smhrd.solar.model.LinkDeviceDTO" alias="linkDevice"/>
+  	<typeAlias type="com.smhrd.solar.model.DeviceGeneratedElecDTO" alias="deviceGeneratedElec"/>
+  	<typeAlias type="com.smhrd.solar.model.DeviceUsedElecDTO" alias="deviceUsedElec"/>
    </typeAliases>
      
 </configuration>        

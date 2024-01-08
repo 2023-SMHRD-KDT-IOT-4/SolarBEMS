@@ -25,6 +25,8 @@ public class LinkDeviceDTO {
     private String dvcTypeName;
     // 디바이스 전기생산/소비 구분코드 : 1)생산:g, 2)소비:u 3)생산소비:gu
     private String dvcElecCode;
+    // 디바이스 전기 생산/소비량
+    private Integer dvcElecVal;
     // 디바이스 파워설정값 코드 : tem, brightness
     private String dvcPowerCode;
     // 디바이스 파워설정값 이름 : 온도, 밝기
@@ -156,12 +158,21 @@ public class LinkDeviceDTO {
 		this.arduId = arduId;
 	}
 
+	public Integer getDvcElecVal() {
+		return dvcElecVal;
+	}
+
+	public void setDvcElecVal(Integer dvcElecVal) {
+		this.dvcElecVal = dvcElecVal;
+	}
+
 	@Override
 	public String toString() {
 		return "LinkDeviceDTO [linkId=" + linkId + ", userId=" + userId + ", dvcId=" + dvcId + ", dvclName=" + dvclName
 				+ ", dvclLoc=" + dvclLoc + ", arduId=" + arduId + ", pinId=" + pinId + ", linkedAt=" + linkedAt
 				+ ", dvcTypeCode=" + dvcTypeCode + ", dvcTypeName=" + dvcTypeName + ", dvcElecCode=" + dvcElecCode
-				+ ", dvcPowerCode=" + dvcPowerCode + ", dvcPowerName=" + dvcPowerName + "]";
+				+ ", dvcElecVal=" + dvcElecVal + ", dvcPowerCode=" + dvcPowerCode + ", dvcPowerName=" + dvcPowerName
+				+ "]";
 	}
 	
 }

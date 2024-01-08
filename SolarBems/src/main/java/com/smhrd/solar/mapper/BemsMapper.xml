@@ -38,4 +38,19 @@
 			WHERE link_id = #{linkId}
 		</delete>
 
+		<select id="getDeviceLinkId" parameterType="String" resultType="int">
+			SELECT link_id FROM device_linked
+			WHERE ardu_id = #{arduId} and pin_id = #{pinId}
+		</select>
+
+		<insert id="insertGeneratedElec" parameterType="deviceGeneratedElec">
+		INSERT INTO device_generated_elec(link_id, elec_generation)
+		VALUES (#{linkId}, #{elecGeneration})
+    </insert>
+
+		<insert id="insertUsedElec" parameterType="deviceUsedElec">
+		INSERT INTO device_used_elec(link_id, elec_consumption)
+		VALUES (#{linkId}, #{elecConsumption})
+    </insert>
+    
   </mapper>

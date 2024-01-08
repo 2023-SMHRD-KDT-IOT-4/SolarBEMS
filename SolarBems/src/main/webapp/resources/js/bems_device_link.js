@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  
+  console.log('device link');
   // 페이지 로딩시 연동된 디바이스 json list From Flask API
   getLinkDeviceList();
 
@@ -38,12 +38,14 @@ $(document).ready(function() {
         let pinId = tds.children('span[name=pinId]').text();
         let dvcTypeName = tds.children('span[name=dvcTypeName]').text();
         let dvcId = tds.children('input[name=dvcId]').val();
+        let arduId = $('#arduId').val();
         let dvcTypeCode = tds.children('input[name=dvcTypeCode]').val();
         let dvcData = {
         	"dvcId" : dvcId,
         	"dvcTypeCode" : dvcTypeCode,
         	"dvcTypeName" : dvcTypeName,
-          "pinId" : pinId,
+        	"arduId" : arduId,
+          "pinId" : pinId
         }
         formData.push(dvcData);
     }
@@ -72,20 +74,21 @@ $(document).ready(function() {
 // 연동된 디바이스 json list From Flask API
 const getLinkDeviceList = () => {
   const apiIp = 'http://172.30.1.89:5000';
-
+	console.log('getLinkDeviceList');
   $.ajax({
     type : 'POST',
     url : apiIp + '/api/device/linked',
     dataType : 'json',
     success : data => {
-
+			
+			console.log(data);
       // 연동된 디바이스가 한개도 없을 경우
       const deviceLen = Object.keys(data.device).length;
-
-      if(data.http_status != 200 || deviceLen == 0) {
+      if(deviceLen == 0) {
         emptyLinkedDevice();
       }
 
+			$('#arduId').val(data.clientId);
       let devices = data.device; // 연동된 디바이스 json list
       $('#deviceLenDiv').html('');
       $('#deviceLenDiv').append('<h6>트래킹 디바이스(총'+devices.length+'개)</h6>');

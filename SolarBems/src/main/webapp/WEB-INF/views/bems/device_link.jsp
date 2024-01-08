@@ -63,6 +63,7 @@
                   <div class="card" id="linkDeviceDiv">
                     <div class="table-responsive">
                       <form id="linkDeviceForm" action="" method="post">
+                       	<input type="hidden" id="arduId" value="" />
                         <div id="deviceLenDiv" class="py-1">        
                         </div>
 

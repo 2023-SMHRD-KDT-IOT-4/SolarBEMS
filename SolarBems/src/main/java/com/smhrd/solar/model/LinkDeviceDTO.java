@@ -12,6 +12,8 @@ public class LinkDeviceDTO {
     private String dvclName;
     // 연동 후 사용자가 설정할 디바이스 설치된 장소 이름 
     private String dvclLoc;
+    // 연동 아두이노 id
+    private String arduId;
     // 아두이노 핀 번호 
     private Integer pinId;
     // 연동 시간 
@@ -30,16 +32,23 @@ public class LinkDeviceDTO {
     
 	public LinkDeviceDTO() {
 	}
-
-	public LinkDeviceDTO(Integer linkId, String userId, String dvcId, String dvclName, String dvclLoc, Integer pinId,
-			String linkedAt) {
+	
+	public LinkDeviceDTO(Integer linkId, String userId, String dvcId, String dvclName, String dvclLoc, String arduId,
+			Integer pinId, String linkedAt, String dvcTypeCode, String dvcTypeName, String dvcElecCode,
+			String dvcPowerCode, String dvcPowerName) {
 		this.linkId = linkId;
 		this.userId = userId;
 		this.dvcId = dvcId;
 		this.dvclName = dvclName;
 		this.dvclLoc = dvclLoc;
+		this.arduId = arduId;
 		this.pinId = pinId;
 		this.linkedAt = linkedAt;
+		this.dvcTypeCode = dvcTypeCode;
+		this.dvcTypeName = dvcTypeName;
+		this.dvcElecCode = dvcElecCode;
+		this.dvcPowerCode = dvcPowerCode;
+		this.dvcPowerName = dvcPowerName;
 	}
 
 	public Integer getLinkId() {
@@ -138,12 +147,21 @@ public class LinkDeviceDTO {
 		this.dvcPowerName = dvcPowerName;
 	}
 
+	
+	public String getArduId() {
+		return arduId;
+	}
+
+	public void setArduId(String arduId) {
+		this.arduId = arduId;
+	}
+
 	@Override
 	public String toString() {
 		return "LinkDeviceDTO [linkId=" + linkId + ", userId=" + userId + ", dvcId=" + dvcId + ", dvclName=" + dvclName
-				+ ", dvclLoc=" + dvclLoc + ", pinId=" + pinId + ", linkedAt=" + linkedAt + ", dvcTypeCode="
-				+ dvcTypeCode + ", dvcTypeName=" + dvcTypeName + ", dvcElecCode=" + dvcElecCode + ", dvcPowerCode="
-				+ dvcPowerCode + ", dvcPowerName=" + dvcPowerName + "]";
+				+ ", dvclLoc=" + dvclLoc + ", arduId=" + arduId + ", pinId=" + pinId + ", linkedAt=" + linkedAt
+				+ ", dvcTypeCode=" + dvcTypeCode + ", dvcTypeName=" + dvcTypeName + ", dvcElecCode=" + dvcElecCode
+				+ ", dvcPowerCode=" + dvcPowerCode + ", dvcPowerName=" + dvcPowerName + "]";
 	}
-    
+	
 }

@@ -23,7 +23,7 @@ const getElecGenerate = () => {
     url : apiIp + '/api/device/linked',
     dataType : 'json',
     success : data => {
-      if(data.http_status != 200 || Object.keys(data.device).length === 0) {
+      if(Object.keys(data.device).length === 0) {
       	alert('연동정보가 없습니다');
       	return;
       }

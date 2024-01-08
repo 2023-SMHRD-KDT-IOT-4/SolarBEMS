@@ -5,12 +5,12 @@
   <mapper namespace="com.smhrd.solar.mapper.BemsMapper">
   
 		<insert id="linkDevice" parameterType="linkDevice">
-			INSERT INTO device_linked(user_id, dvc_id, dvcl_name, dvcl_loc, pin_id)
-			VALUES(#{userId}, #{dvcId},#{dvclName},#{dvclLoc}, #{pinId})
+			INSERT INTO device_linked(user_id, dvc_id, dvcl_name, dvcl_loc, ardu_id, pin_id)
+			VALUES(#{userId}, #{dvcId},#{dvclName},#{dvclLoc}, #{arduId}, #{pinId})
 		</insert>
 	
 		<select id="getLinkedList" resultType="linkDevice">
-			SELECT d1.link_id, d1.user_id, d1.dvc_id, d1.dvcl_name, d1.dvcl_loc, d1.pin_id, d1.linked_at, 
+			SELECT d1.link_id, d1.user_id, d1.dvc_id, d1.dvcl_name, d1.dvcl_loc, d1.ardu_id, d1.pin_id, d1.linked_at, 
 				d2.dvc_type_code, d2.dvc_type_name, d2.dvc_elec_code, d2.dvc_power_code, d2.dvc_power_name
 			FROM device_linked d1 
 			    INNER JOIN device_info d2 ON d1.dvc_id = d2.dvc_id
@@ -18,7 +18,7 @@
 		</select>
 	
 		<select id="getLinkedDevice" resultType="linkDevice">
-			SELECT d1.link_id, d1.user_id, d1.dvc_id, d1.dvcl_name, d1.dvcl_loc, d1.pin_id, d1.linked_at, 
+			SELECT d1.link_id, d1.user_id, d1.dvc_id, d1.dvcl_name, d1.dvcl_loc, d1.ardu_id, d1.pin_id, d1.linked_at, 
 				d2.dvc_type_code, d2.dvc_type_name, d2.dvc_elec_code, d2.dvc_power_code, d2.dvc_power_name
 			FROM device_linked d1 
 			    INNER JOIN device_info d2 ON d1.dvc_id = d2.dvc_id

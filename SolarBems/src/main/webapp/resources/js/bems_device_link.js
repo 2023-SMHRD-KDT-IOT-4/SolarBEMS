@@ -1,8 +1,12 @@
 $(document).ready(function() {
   console.log('device link');
   
+  const userId = $('#userId').val();
+	const arduId = $('#arduId').val();
+  
   // 페이지 로딩시 연동된 디바이스 json list From Flask API
-  getLinkDeviceList();
+  let result = getLinkedDeviceList(userId, arduId);
+  processLinkedAPI(result); // 응답받은 연동 디바이스 리스트 처리
 
   // 연동버튼 클릭
   $("#linkBtn").on("click", e => {
@@ -12,7 +16,7 @@ $(document).ready(function() {
   
   // 재연동버튼 클릭
   $("#retryLinkBtn").on("click", () => {
-    getLinkDeviceList();
+    getLinkedDeviceList();
   });
 
   // 체크박스(전체선택) 클릭
@@ -68,49 +72,23 @@ $(document).ready(function() {
     }
 	});
     
- }
-    
+ } // linkDevice
 
+// 응답받은 연동 디바이스 리스트 처리
+const processLinkedAPI = result => {
 
-// 연동된 디바이스 json list From Flask API
-const getLinkDeviceList = () => {
-
-	const userId = $('#userId').val();
-	const arduId = $('#arduId').val();
-	console.log('getLinkDeviceList ardu' + arduId);
-  let reqData = {
-		"clientType": clientType,
-		"clientId": userId,
- 		"arduId" : arduId,
+  // 에러 또는 연동된 디바이스가 한개도 없을 경우
+	if(result === false || Object.keys(result).length == 0) {
+	  emptyLinkedDevice();
+    return;
   }
-  console.log(reqData);
 
-  $.ajax({
-    type : 'POST',
-    url : flaskIp + '/api/device/linked',
-    data: JSON.stringify(reqData),
-    dataType : 'json',
-    contentType : 'application/json; charset:UTF-8',
-    success : data => {
-			
-			console.log(data);
-      // 연동된 디바이스가 한개도 없을 경우
-      if(Object.keys(data).length == 0) {
-        emptyLinkedDevice();
-        return;
-      }
+	// 연동된 디바이스 json list 
+  let devices = result.device; 
+  $('#deviceLenDiv').html('');
+  $('#deviceLenDiv').append('<h6>트래킹 디바이스(총'+devices.length+'개)</h6>');
+  makeTable(devices); // table 데이터 처리
 
-      let devices = data.device; // 연동된 디바이스 json list
-      $('#deviceLenDiv').html('');
-      $('#deviceLenDiv').append('<h6>트래킹 디바이스(총'+devices.length+'개)</h6>');
-      makeTable(devices);
-
-    },
-    error : () => {
-      alert('디바이스 트래킹 실패 error');
-      emptyLinkedDevice();
-    }
-  });
 }
 
 const makeTable = devices => {
@@ -144,7 +122,7 @@ const makeTable = devices => {
 
   tableTag += '</table>';
   $('#linkDviceBody').append(tableTag);
-}
+} // makeTable
 
 // 연동된 디바이스가 한개도 없을 경우
 const emptyLinkedDevice = () => {

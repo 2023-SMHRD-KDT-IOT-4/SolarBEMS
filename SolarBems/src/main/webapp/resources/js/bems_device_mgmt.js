@@ -50,53 +50,33 @@ $(document).ready(function() {
   
   // 디바이스 제어 > 제어전송 버튼 클릭 ==> Flask API 
   $('#controlExecuteBtn').on("click", () => {
-		sendToFlask();
-  });
-
-
-});
-
-
-	// 제어전송 버튼 클릭. 디바이스 제어값  ==> Flask API
-	const sendToFlask = () => {
-	
+  
 		const userId = $('#userId').val();
+		const arduId = $('#arduId').val();
+		
 		const pinId = $('#sendPinId').val(); 
 		const powerStatus = $('#powerStatus').is(':checked') ? 1 : 0;
 		const powerVal = $('#poewrVal').val();
-		let sendData = {
-	    "clientType": "web",
-	    "clientId": userId,
-			"control": {
-				"pinId": pinId,
-				"powerStatus": powerStatus,
-				"powerVal": powerVal
-			}
-	}
-	console.log(JSON.stringify(sendData));
+		const controlObj = {
+      "pinId": pinId,
+      "powerStatus": powerStatus,
+      "powerVal": powerVal
+	  }
 
-	// 디바이스 제어 json Data ==> To Flask API 
-  $.ajax({
-    type : 'POST',
-    url : flaskIp + '/api/device/control',
-    contentType: 'application/json; charset=utf-8',
-    data : JSON.stringify(sendData),
-    dataType : 'json',
-    success : data => {
+    let result = sendDeviceControl(userId, arduId, controlObj);
+    console.log(result);
+		if(!result) {
+			alert('디바이스 제어 실패');
+		}
+    console.log(result);    
 
- 			console.log(data);
-
-    },
-    error : () => {
-      alert('디바이스 제어 실패');
-    }
-  });
-	
-}// sendToFlask
+  }); // $('#controlExecuteBtn')
 
 
+}); // document
+// ====================================================================
 
-	// 관리화면 > 테이블 row의 디바이스 제어 아이콘 클릭
+// 관리화면 > 테이블 row의 디바이스 제어 아이콘 클릭
 	const controlDevice = (pinId, dvclName, dvcPowerName) => {
 	
 		$('#controlDiv').show(); // 디바이스 제어 div출력

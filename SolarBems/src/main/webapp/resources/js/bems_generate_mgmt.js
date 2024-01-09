@@ -25,9 +25,15 @@ const getElecGenerate = () => {
   // 에러 또는 연동된 디바이스가 한개도 없을 경우
 	if(result === false || Object.keys(result).length == 0) {
 		alert('연동정보가 없습니다');
+		return;
   }
   
 	let devices = result.device; // 연동된 디바이스 json list
+	if(devices.length == 0) {
+		alert('연동정보가 없습니다');
+		return;
+  }	
+
 	// 필터 태양광패널만('dvc001')
 	const solarList = devices.filter( dvc => dvc.dvcId == 'dvc001');
 	const solarObj = Object.assign({}, solarList)[0];
@@ -66,42 +72,25 @@ const getElecGenerate = () => {
 } // getElecGenerate
 
 
-	// 전환하기 버튼 클릭. 디바이스 제어값  ==> Flask API
+	// 모달창 > 전환하기 버튼 클릭. 디바이스 제어값  ==> Flask API
 	const sendToFlask = elecStatus => {
 	
-		// 디바이스 제어 json Data ==> To Flask API 
 		const userId = $('#userId').val();
 		const arduId = $('#arduId').val();
 		const pinId = $('#sendPinId').val(); 
+		const controlObj = {
+      "pinId": pinId,
+      "powerStatus": elecStatus,
+      "powerVal": ""
+	  }				
 		
-		let sendData = {
-	    "clientType": "web",
-	    "clientId": userId,
-	    "arduId" : arduId,
-			"control": {
-				"pinId": pinId,
-				"powerStatus": elecStatus,
-				"powerVal": ""
-			}
-		}
-		console.log(JSON.stringify(sendData));
+		// result에 control_id: "control4"
 
-	  $.ajax({
-	    type : 'POST',
-	    url : flaskIp + '/api/device/control',
-	    contentType: 'application/json; charset=utf-8',
-	    data : JSON.stringify(sendData),
-	    dataType : 'json',
-	    success : data => {
-	
-	 			console.log(data);
-	
-	    },
-	    error : () => {
-	      alert('디바이스 제어 실패');
-	    }
-    
-  	}); //ajax
+		let result = sendDeviceControl(userId, arduId, controlObj);
+    console.log(result);				
+		if(!result || Object.keys(result).length ) {
+			alert('디바이스 제어 실패');
+		}
 	
 }// sendToFlask
 

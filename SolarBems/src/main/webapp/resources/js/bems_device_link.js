@@ -1,5 +1,6 @@
 $(document).ready(function() {
   console.log('device link');
+  
   // 페이지 로딩시 연동된 디바이스 json list From Flask API
   getLinkDeviceList();
 
@@ -35,11 +36,11 @@ $(document).ready(function() {
         // 선택 체크박스의 td들
         let tds = $(this).parents('tr').children('td');
 
-        let pinId = tds.children('span[name=pinId]').text();
-        let dvcTypeName = tds.children('span[name=dvcTypeName]').text();
-        let dvcId = tds.children('input[name=dvcId]').val();
-        let arduId = $('#arduId').val();
-        let dvcTypeCode = tds.children('input[name=dvcTypeCode]').val();
+        const pinId = tds.children('span[name=pinId]').text();
+        const dvcTypeName = tds.children('span[name=dvcTypeName]').text();
+        const dvcId = tds.children('input[name=dvcId]').val();
+        const arduId = $('#arduId').val();
+        const dvcTypeCode = tds.children('input[name=dvcTypeCode]').val();
         let dvcData = {
         	"dvcId" : dvcId,
         	"dvcTypeCode" : dvcTypeCode,
@@ -74,10 +75,12 @@ $(document).ready(function() {
 // 연동된 디바이스 json list From Flask API
 const getLinkDeviceList = () => {
 
+	const userId = $('#userId').val();
 	const arduId = $('#arduId').val();
 	console.log('getLinkDeviceList ardu' + arduId);
   let reqData = {
 		"clientType": clientType,
+		"clientId": userId,
  		"arduId" : arduId,
   }
   console.log(reqData);

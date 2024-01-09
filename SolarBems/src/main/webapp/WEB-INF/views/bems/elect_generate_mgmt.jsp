@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
     
@@ -106,7 +106,8 @@
                 <div class="col-md-6 d-flex justify-content-center align-items-center ps-4">
                   <form>
                   	<input type="hidden" id="sendPinId" value="">
-                  	<input type="hidden" id="userId" value="${user.userId}">
+                  	<input type="hidden" id="userId" value="${sessionScope.user.userId}">
+                  	<input type="hidden" id="arduId" value="${sessionScope.user.arduId}" />
                     <h6>전력제어 상태 전환</h6>
                     <!-- 전기 사용상태 토글 -->
                     <div class="togglebutton form-check form-switch">

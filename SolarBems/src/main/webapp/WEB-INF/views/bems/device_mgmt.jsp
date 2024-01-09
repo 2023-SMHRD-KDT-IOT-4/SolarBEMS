@@ -87,7 +87,8 @@
             <div class="card-body p-4 ">
               <div class="card">
                 <div class="table-responsive">
-                	<input type="hidden" id="userId" value="${user.userId}">
+                	<input type="hidden" id="userId" value="${sessionScope.user.userId}">
+                	<input type="hidden" id="arduId" value="${sessionScope.user.arduId}">
                 	<input type="hidden" id="linkOffLinkId" value="">
                 	<input type="hidden" id="linkOffNo" value="">
                 	

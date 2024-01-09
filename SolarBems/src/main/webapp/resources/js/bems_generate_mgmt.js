@@ -16,21 +16,36 @@ $(document).ready(function() {
 
 // 전력 생산량 및 제어상태 정보(json data)t From Flask API
 const getElecGenerate = () => {
+
+	const userId = $('#userId').val();
+	const arduId = $('#arduId').val();
+	console.log('getLinkDeviceList ardu' + arduId);
+  let reqData = {
+		"clientType": clientType,
+		"clientId": userId,
+ 		"arduId" : arduId
+  }
+  console.log(reqData);
+
   $.ajax({
     type : 'POST',
     url : flaskIp + '/api/device/linked',
+    data: JSON.stringify(reqData),
     dataType : 'json',
     contentType : 'application/json; charset:UTF-8',
     success : data => {
-      if(Object.keys(data.device).length === 0) {
+    
+    	// 연동된 디바이스가 한개도 없을 경우
+      if(Object.keys(data).length === 0) {
       	alert('연동정보가 없습니다');
       	return;
       }
-      const dvcList = data.device;
-      const deviceLen = dvcList != null ? Object.keys(dvcList).length : 0;
-
-      // 필터 태양광패널만('dvc001'
-      const solarList = dvcList.filter( dvc => dvc.dvcId == 'dvc001');
+      console.log(data);
+      
+      let devices = data.device; // 연동된 디바이스 json list
+      
+      // 필터 태양광패널만('dvc001')
+      const solarList = devices.filter( dvc => dvc.dvcId == 'dvc001');
 			const solarObj = Object.assign({}, solarList)[0];
 			$('#sendPinId').val(solarObj.pinId);
 			console.log(solarObj);
@@ -77,11 +92,13 @@ const getElecGenerate = () => {
 	
 		// 디바이스 제어 json Data ==> To Flask API 
 		const userId = $('#userId').val();
+		const arduId = $('#arduId').val();
 		const pinId = $('#sendPinId').val(); 
 		
 		let sendData = {
 	    "clientType": "web",
 	    "clientId": userId,
+	    "arduId" : arduId,
 			"control": {
 				"pinId": pinId,
 				"powerStatus": elecStatus,

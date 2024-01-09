@@ -63,7 +63,8 @@
                   <div class="card" id="linkDeviceDiv">
                     <div class="table-responsive">
                       <form id="linkDeviceForm" action="" method="post">
-                       	<input type="hidden" id="arduId" value="${user.arduId}" />
+                       	<input type="hidden" id="userId" value="${sessionScope.user.userId}" />
+                       	<input type="hidden" id="arduId" value="${sessionScope.user.arduId}" />
                         <div id="deviceLenDiv" class="py-1">        
                         </div>
 

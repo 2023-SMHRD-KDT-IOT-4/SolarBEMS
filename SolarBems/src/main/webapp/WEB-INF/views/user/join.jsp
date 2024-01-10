@@ -110,19 +110,19 @@
               </div>
               <!-- 회원가입 입력폼. div .is-valid .is-invalid -->
               <div class="card-body pb-0 pt-3">
-                <form role="form"  class="text-start">
+                <form action="/member/signUp" id="signUpForm" role="form"  class="text-start" method="post">
 
                   <div class="input-group input-group-outline mb-2">
                     <label class="form-label">아이디</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" id="userId" name="userId">
                   </div>
-                  <div class="input-group input-group-outline mb-2">
-                    <label class="form-label" id="pw1">비밀번호</label>
-                    <input type="password" class="form-control">
+                  <div class="input-group input-group-outline mb-2" id="userPwDiv1">
+                    <label class="form-label">비밀번호 (최소 4자리 최대 16자리 입력)</label>
+                    <input type="password" class="form-control" id="userPw1" name="userPw1" placeholder=""  maxlength="16" onkeyup="checkPw()">
                   </div>
-                  <div class="input-group input-group-outline mb-2">
-                    <label class="form-label" id="pw2">비밀번호 확인</label>
-                    <input type="password" class="form-control">
+                  <div class="input-group input-group-outline mb-2" id="userPwDiv2">
+                    <label class="form-label">비밀번호 확인</label>
+                    <input type="password" class="form-control" id="userPw2" name="userPw2" maxlength="16" onkeyup="checkPw()">
                   </div>
                   <div class="input-group input-group-outline mb-2">
                     <label class="form-label">닉네임</label>
@@ -136,22 +136,16 @@
                     <label class="form-label">방 갯수</label>
                     <input type="number" class="form-control">
                   </div>
-                  <!-- 회원가입 동의부분 -->
-                  <!-- <div class="form-check form-check-info text-start ps-0">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-                    <label class="form-check-label" for="flexCheckDefault">
-                      I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
-                    </label>
-                  </div> -->
+                  <!-- 아두이노 아이디 -->
                   <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 my-2 mb-3">
+                    <button type="button" class="btn bg-gradient-primary w-100 my-2 mb-3" onclick="sendIt()">
                       가입하기
-                    </button>
+                    </button>        
                   </div>
                   <div class="card-footer text-center pt-1 pb-1  px-lg-2 px-1">
                     <p class="mb-2 text-sm mx-auto">
-                      기존 계정있으십니까?
-                      <a href="${contextPath}/user/login" class="text-primary text-gradient font-weight-bold">로그인</a>
+                      기존 계정이 있으십니까?
+                      <a href="./login.html" class="text-primary text-gradient font-weight-bold">로그인</a>
                     </p>
                   </div>
                  
@@ -186,5 +180,6 @@
 
   <!-- Solar Files  -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="${contextPath}/resources/js/solar_join.js"></script>
   </body>
 </html>

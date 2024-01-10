@@ -16,5 +16,24 @@
 			WHERE user_id = #{userId}
 		</select>
 
+		<!-- 회원 가입 -->
+		<insert id="userJoin" parameterType="user">
+			INSERT INTO user_info
+			(user_id, user_pw, user_nick, building_name, room_number, ardu_id)
+			VALUES (#{userId}, #{userPw}, #{userNick}, #{buildingName}, #{roomNumber},
+			#{arduId})
+		</insert>
+		
+		<!-- 회원정보 수정 -->
+		<update id="userUpdate" parameterType="user">
+			UPDATE user_info
+			SET
+			user_pw = #{userPw},
+			user_nick = #{userNick},
+			building_name =
+			#{buildingName},
+			room_number = #{roomNumber}
+			WHERE user_id = #{userId}
+		</update>
 
   </mapper>

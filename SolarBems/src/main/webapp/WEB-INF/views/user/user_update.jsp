@@ -56,18 +56,16 @@
                     Solar BEMS
                   </a>
                 </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link me-2" href="./join.html">
-                    <i class="fa fa-user-plus text-dark me-1"></i>
-                    회원가입
-                  </a>
-                </li> -->
+
+                <c:if test="${!empty sessionScope.user }">
                 <li class="nav-item">
                   <a class="nav-link me-2" href="${contextPath}/">
                     <i class="fa fa-sign-in text-dark text-dark me-1" aria-hidden="true"></i>
                     로그아웃
                   </a>
                 </li>
+                </c:if>
+                
               </ul>
             </div>
           </div>

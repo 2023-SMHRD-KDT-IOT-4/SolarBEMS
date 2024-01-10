@@ -1,7 +1,6 @@
 
 $(document).ready(function() {
-	console.log('user js');
-	
+
 	// 로그인하기 버튼 클릭
 	$('#loginBtn').click(function () {
 		$("#loginForm").submit();

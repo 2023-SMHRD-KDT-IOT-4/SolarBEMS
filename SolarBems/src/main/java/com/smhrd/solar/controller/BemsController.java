@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.smhrd.solar.mapper.BemsMapper;
 import com.smhrd.solar.model.LinkDeviceDTO;
 import com.smhrd.solar.model.UserDTO;
@@ -47,7 +48,8 @@ public class BemsController {
 	}
 	
 	// 디바이스 제어 및 관리 페이지
-	@RequestMapping(value = "/device_mgmt", method = RequestMethod.GET)
+	@RequestMapping(value = "/device_mgmt", method = RequestMethod.GET,
+					produces="application/json;charset=UTF-8")
 	public String deviceMgmtPage(HttpSession session, Model model) {
 		
 		UserDTO user = (UserDTO) session.getAttribute("user");
@@ -55,7 +57,11 @@ public class BemsController {
 			return "redirect:/user/login";
 		
 		List<LinkDeviceDTO> list = bemsMapper.getLinkedList(user.getUserId());
-		model.addAttribute("linkedList", list);
+		Gson gson = new Gson();
+		
+        String jsonArrayString = gson.toJson(list);
+        System.out.println("JSON Array : " + jsonArrayString);			
+		model.addAttribute("linkedList", jsonArrayString);
 		
 		return "bems/device_mgmt";
 	}

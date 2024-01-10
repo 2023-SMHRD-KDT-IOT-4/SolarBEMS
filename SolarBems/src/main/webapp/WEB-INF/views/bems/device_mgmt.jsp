@@ -73,7 +73,7 @@
               <div class="row">
                 <!--  -->
                 <div class="col-md-7">
-                  <h6 class="pt-2">연동 디바이스(3개)</h6>
+                  <h6 class="pt-2" id="linkedCnt">연동 디바이스</h6>
                 </div>
                 <!--  -->
                 <div class="col-md-5 d-flex justify-content-start justify-content-md-end align-items-center">
@@ -91,69 +91,25 @@
                 	<input type="hidden" id="arduId" value="${sessionScope.user.arduId}">
                 	<input type="hidden" id="linkOffLinkId" value="">
                 	<input type="hidden" id="linkOffNo" value="">
-                	
-                	<c:choose>
-                		<c:when test="${empty linkedList}">
-	                    <h4 class="text-dark"> 연동 디바이스 없습니다.</h4>
-                		</c:when>
-                		
-                		<c:otherwise>
-		                  <table class="table table-hover align-items-center mb-0 text-danger">
-		                    <thead >
-		                      <tr style="border-width:1px; border-color: rgb(128, 128, 128); background-color: rgb(66, 139, 202);">
-		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">No</th>
-		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">디바이스 이름</th>
-		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">타입</th>
-		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">운전상태</th>
-		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">설치위치</th>
-		                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">디바이스 제어</th>
-		                      </tr>
-		                    </thead>
-		                    <tbody id="linkedDviceBody">
-		
-												<c:forEach items="${linkedList}" var="vo" varStatus="status">
-		                      <tr class="bg-gray" id="deviceTr${status.count}">
-		                        <td class="align-middle text-center">
-		                          <span class="text-dark text-md font-weight-normal">${status.count}</span>
-		                        </td>
-		                        <td class="align-middle text-center">
-		                          <span class="text-dark text-md font-weight-normal">${vo.dvclName}</span>
-		                        </td>
-		                        <td class="align-middle text-center text-sm">
-		                          <span class="text-dark text-md font-weight-normal">LED</span>
-		                        </td>
-		                        <td class="align-middle text-center">
-		                          <span class="text-dark text-md font-weight-normal">ON</span>
-		                        </td>
-		                        <td class="align-middle text-center">
-		                          <span class="text-dark text-md font-weight-normal">${vo.dvclLoc}</span>
-		                        </td>
-		                        <td>
-		                          <a class="btn btn-link text-info text-gradient px-1 mb-0"
-		                          	onclick="javascript:controlDevice('${vo.pinId}','${vo.dvclName}', '${vo.dvcPowerName}')">
-		                            <i class="material-icons">settings_remote</i>
-		                            디바이스 제어
-		                          </a>
-		                          <a class="btn btn-link text-danger text-gradient px-1 mb-0 modalBtn" 
-		                          	data-bs-toggle="modal" data-bs-target="#linkOffModal" 
-		                          	data-bs-id="${vo.linkId}" data-bs-param="${vo.dvclName}"
-		                          	data-bs-no="${status.count}">
-		                            <i class="material-icons">link_off</i>
-		                            연동해제
-		                          </a>
-		                          <a class="btn btn-link text-dark px-1 mb-0" href="${contextPath}/bems/device_update/${vo.linkId}">
-		                            <i class="material-icons">edit</i>
-		                            수정
-		                          </a>
-		
-		                        </td>
-		                      </tr>
-												</c:forEach>
-		                    </tbody>
-		                    
-		                  </table>                		
-                		</c:otherwise>
-                	</c:choose>
+                	<c:if test="${empty linkedList }">
+           					<h4 class="text-dark"> 연동 디바이스 없습니다.</h4>
+                	</c:if>
+                	<c:if test="${not empty linkedList }">
+	                  <table class="table table-hover align-items-center mb-0 text-danger">
+	                    <thead >
+	                      <tr style="border-width:1px; border-color: rgb(128, 128, 128); background-color: rgb(66, 139, 202);">
+	                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">No</th>
+	                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">디바이스 이름</th>
+	                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">타입</th>
+	                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">운전상태</th>
+	                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">운전값</th>
+	                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">설치위치</th>
+	                        <th class="text-center text-uppercase text-white text-md font-weight-bolder">디바이스 제어</th>
+	                      </tr>
+	                    </thead>
+	                    <tbody id="linkedDviceBody"></tbody>
+	                  </table>                		
+                	</c:if>
                   
                 </div><!-- End <div class="table-responsive"> -->
               </div><!-- End card -->
@@ -184,6 +140,8 @@
               <form>
                 <div class="row">
                   <div class="col-md-5 d-flex justify-content-center align-items-center mt-3">
+                  	<input type="hidden" id="clickPowerStatus" value="" />
+                  	<input type="hidden" id="clickPowerVal" value="" />
                   	<input type="hidden" id="sendPinId" value="" />
                   	<input type="hidden" id="sendPowerStatus" value="" />
                     <!-- 운전상태 토글 -->
@@ -243,7 +201,30 @@
   <!-- Solar Files  -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="${contextPath}/resources/js/common_api.js"></script>
-	<script src="${contextPath}/resources/js/bems_device_mgmt.js"></script>
-
+  
+	<script type="text/javascript">
+	
+		$(document).ready(function() {
+			console.log('bems_device_mgmt');
+			
+			const userId = $('#userId').val();
+			const arduId = $('#arduId').val();
+			// &#034
+			let dbList = '<c:out value="${linkedList}" escapeXml="false"/>';
+			dbList = dbList.replaceAll('&#34;', '\"');
+			dbList = JSON.parse(dbList);
+			if(dbList == [] || dbList == '[]') {
+				dbList = [];
+			}
+			
+			$('#linkedCnt').append('('+ dbList.length +')'); // 연동된 디바이스 갯수
+			// 페이지 로딩시 (db리스트,  연동된 디바이스 json list From Flask API)
+		  let result = getLinkedDeviceList(userId, arduId);
+			makeTableBody(dbList, result);
+		
+		});
+	  
+	</script>
+	<script defer src="${contextPath}/resources/js/bems_device_mgmt.js"></script>
   </body>
 </html>

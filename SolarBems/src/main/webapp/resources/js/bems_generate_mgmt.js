@@ -25,20 +25,27 @@ const getElecGenerate = () => {
   // 에러 또는 연동된 디바이스가 한개도 없을 경우
 	if(result === false || Object.keys(result).length == 0) {
 		alert('연동정보가 없습니다');
+		emptySolarObj();
 		return;
   }
   
 	let devices = result.device; // 연동된 디바이스 json list
 	if(devices.length == 0) {
 		alert('연동정보가 없습니다');
+		emptySolarObj();
 		return;
   }	
 
 	// 필터 태양광패널만('dvc001')
 	const solarList = devices.filter( dvc => dvc.dvcId == 'dvc001');
 	const solarObj = Object.assign({}, solarList)[0];
-	$('#sendPinId').val(solarObj.pinId);
 	console.log(solarObj);
+	if(solarObj === undefined) {
+		alert('연동정보가 없습니다');
+		emptySolarObj();
+		return;
+	}
+	$('#sendPinId').val(solarObj.pinId);
 	
 	
 	// 전력제어 상태 : 체크박스 처리
@@ -85,14 +92,18 @@ const getElecGenerate = () => {
 	  }				
 		
 		// result에 control_id: "control4"
-
 		let result = sendDeviceControl(userId, arduId, controlObj);
-    console.log(result);				
-		if(!result || Object.keys(result).length ) {
+    console.log(result);	
+    			
+		if(!result || Object.keys(result).length == 0 ) {
 			alert('디바이스 제어 실패');
 		}
 	
 }// sendToFlask
 
+const emptySolarObj = () => {
+	$('#elecStatusCheckbox').prop("checked", false).prop("disabled", true);
+	$('#remainBatteryBar').css('width', '0'+'%');
+}
 
 

@@ -57,7 +57,6 @@ const getLinkedDeviceList = (userId, arduId) => {
     dataType : 'json',
     contentType : 'application/json; charset:UTF-8',
     success : data => {
-			console.log(data);
 			result = data;
     },
     error : () => {

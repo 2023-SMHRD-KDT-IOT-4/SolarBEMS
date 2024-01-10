@@ -67,14 +67,65 @@ $(document).ready(function() {
 
   }); // $('#controlExecuteBtn')
 
+	  $('span[name^="controlDevice"]').on('click', () => {
+			const regex = /[^0-9]/g;
+	  	 let id = $(this).attr('id');
+	  	console.log(id);
+	  	let childs = $('span[name^="controlDevice"]').nextAll();
+	  	console.log(childs);
+	  	console.log($(this).prevAll());
+	  	// tagId = id.replace(regex, '');
+	    alert('ttt  ');
+	  })
+
+	$('.controlDevice').on('click', (e) => {
+		let children = e.target.children;
+		let pinId = children[0].value;
+		let dvclName = children[1].value;
+		let dvcPowerName = children[2].value;
+		
+		const regex = /[^0-9]/g;// 숫자가 아닌 문자열을 선택하는 정규식
+		let findId = children[0].id.replace(regex, "");
+		
+		let powerStatusVal = $('#powerStatusSpan'+findId).text();
+		let powerVal = $('#powerValSpan'+findId).text();
+		$('#clickPowerStatus').val(powerStatusVal);
+		$('#clickPowerVal').val(powerVal);
+		
+		controlDevice(pinId, dvclName, dvcPowerName);
+});
+
+	
 }); // document
 
 // ====================================================================
 
 
+
+// 관리화면 > 테이블 row의 디바이스 제어 아이콘 클릭
+const controlDevice = (pinId, dvclName, dvcPowerName) => {
+	$('#controlDiv').show(); // 디바이스 제어 div출력
+	
+	// 클릭한 디바이스 별 출력 세팅
+	$('#deviceName').html(dvclName); // 디바이스 이름
+	$('#powerType').html('(' + dvcPowerName +')'); // 파워설정값
+	
+	// 운전상태값
+	let clickPowerStatus = $('#clickPowerStatus').val();
+	if(clickPowerStatus == 'ON') {
+		$('#powerStatus').prop('checked', true);
+	} else {
+		$('#powerStatus').prop('checked', false);
+	}	
+	 $('#poewrVal').val($('#clickPowerVal').val()); 
+	
+	$('#sendPinId').val(pinId);
+}
+
+
+
 // 테이블 내 연동된 디바이스 운전상태, 운전상태값
 const makeTableBody = (dbList, datas) => {
-  console.log('makeTableBody dbList');
   console.log(dbList);
   console.log(datas);
   
@@ -106,15 +157,19 @@ const makeTableBody = (dbList, datas) => {
     tableTag += '</td>';
     // 제어
     tableTag += '<td class="align-middle text-center">';
-    tableTag += '<a class="btn btn-link text-info text-gradient px-1 mb-0"';
-    tableTag += 'onclick="javascript:controlDevice('+ '"${value.pinId}", ' + '"${value.dvclName}", "${value.dvcPowerName}")"'+'>';
+  	tableTag += '<a class="btn btn-link text-info text-gradient px-1 mb-0 controlDevice">';
+   	tableTag += '<input type="hidden" id="pinId'+(key+1) +'" value="'+value.pinId +'" >';
+    tableTag += '<input type="hidden" id="dvclName'+(key+1) +'" value="'+value.dvclName +'" >';
+    tableTag += '<input type="hidden" id="dvcPowerName'+(key+1) +'" value="'+value.dvcPowerName +'" >';
     tableTag += '<i class="material-icons">settings_remote</i>디바이스 제어</a>';
+    
     tableTag += '<a class="btn btn-link text-danger text-gradient px-1 mb-0 modalBtn"';
     tableTag += ' data-bs-toggle="modal" data-bs-target="#linkOffModal"';
-    tableTag += ' data-bs-id="' + '${value.linkId}' + '" data-bs-param="${value.dvclName}"';
-    tableTag += ' data-bs-no="${status.count}"> <i class="material-icons">link_off</i>';
+    tableTag += ' data-bs-id="' + value.linkId + '" data-bs-param="'+value.dvclName+'"';
+    tableTag += ' data-bs-no="'+ (key+1) + '"> <i class="material-icons">link_off</i>';
     tableTag += ' 연동해제</a>';
-    tableTag += '<a class="btn btn-link text-dark px-1 mb-0" href="${contextPath}/bems/device_update/${value.linkId}">';
+    
+    tableTag += '<a class="btn btn-link text-dark px-1 mb-0" href="../bems/device_update/' + value.linkId +'">';
     tableTag += '<i class="material-icons">edit</i>수정</a>';
     tableTag += '</td>';
     tableTag += '</tr>';
@@ -135,16 +190,4 @@ const makeTableBody = (dbList, datas) => {
 }// makeTableData
 
 
-// 관리화면 > 테이블 row의 디바이스 제어 아이콘 클릭
-const controlDevice = (pinId, dvclName, dvcPowerName) => {
-
-	$('#controlDiv').show(); // 디바이스 제어 div출력
-	
-	// 클릭한 디바이스 별 출력 세팅
-	$('#deviceName').html(dvclName); // 디바이스 이름
-	$('#powerType').html('(' + dvcPowerName +')'); // 파워설정값
-	//$('#powerStatus') // 운전상태값
-	
-	$('#sendPinId').val(pinId);
-}
   

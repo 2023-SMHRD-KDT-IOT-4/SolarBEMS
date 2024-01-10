@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -73,7 +74,7 @@
               <div class="row">
                 <!--  -->
                 <div class="col-md-7">
-                  <h6 class="pt-2" id="linkedCnt">연동 디바이스</h6>
+                  <h6 class="pt-2" id="linkedCnt">연동 된 디바이스</h6>
                 </div>
                 <!--  -->
                 <div class="col-md-5 d-flex justify-content-start justify-content-md-end align-items-center">
@@ -91,10 +92,10 @@
                 	<input type="hidden" id="arduId" value="${sessionScope.user.arduId}">
                 	<input type="hidden" id="linkOffLinkId" value="">
                 	<input type="hidden" id="linkOffNo" value="">
-                	<c:if test="${empty linkedList }">
-           					<h4 class="text-dark"> 연동 디바이스 없습니다.</h4>
+                	<c:if test="${fn:length(linkedList) lt 3}">
+           					<h4 class="text-dark"> 연동 된 디바이스 없습니다.</h4>
                 	</c:if>
-                	<c:if test="${not empty linkedList }">
+                	<c:if test="${fn:length(linkedList) gt 3 }">
 	                  <table class="table table-hover align-items-center mb-0 text-danger">
 	                    <thead >
 	                      <tr style="border-width:1px; border-color: rgb(128, 128, 128); background-color: rgb(66, 139, 202);">
@@ -146,7 +147,7 @@
                   	<input type="hidden" id="sendPowerStatus" value="" />
                     <!-- 운전상태 토글 -->
                    <div class="form-check form-switch">
-                     <input class="form-check-input" type="checkbox" id="powerStatus" checked="false">
+                     <input class="form-check-input" type="checkbox" id="powerStatus" >
                      <label class="form-check-label" for="powerStatus">운전OFF/ON</label>
                    </div>
                   </div>
@@ -155,7 +156,7 @@
                     <div class="input-group input-group-static w-60">
                       <label >설정값</label>
                       <label id="powerType"></label>
-                      <input type="number" class="form-control" id="poewrVal" value="20"><!-- disabled -->
+                      <input type="number" class="form-control" id="poewrVal" value=""><!-- disabled -->
                     </div>
                   </div>
                 </div>
@@ -205,11 +206,9 @@
 	<script type="text/javascript">
 	
 		$(document).ready(function() {
-			console.log('bems_device_mgmt');
 			
 			const userId = $('#userId').val();
 			const arduId = $('#arduId').val();
-			// &#034
 			let dbList = '<c:out value="${linkedList}" escapeXml="false"/>';
 			dbList = dbList.replaceAll('&#34;', '\"');
 			dbList = JSON.parse(dbList);
@@ -225,6 +224,7 @@
 		});
 	  
 	</script>
-	<script defer src="${contextPath}/resources/js/bems_device_mgmt.js"></script>
+	<script src="${contextPath}/resources/js/bems_device_mgmt.js"></script>
+	
   </body>
 </html>

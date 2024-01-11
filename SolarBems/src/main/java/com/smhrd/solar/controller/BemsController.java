@@ -30,8 +30,19 @@ public class BemsController {
 	BemsMapper bemsMapper;
 	
 	// 전력 Dashboard 페이지
-	@RequestMapping(value = "/elect_dashboard", method = RequestMethod.GET)
-	public String elecDashBoardPage() {
+	@RequestMapping(value = "/elect_dashboard", method = RequestMethod.GET,
+					produces="application/json;charset=UTF-8")
+	public String elecDashBoardPage(HttpSession session, Model model) {
+		
+		UserDTO user = (UserDTO) session.getAttribute("user");
+//		if(user == null)
+//			return "redirect:/user/login";
+		List<LinkDeviceDTO> list = bemsMapper.getLinkedList(user.getUserId());
+		Gson gson = new Gson();
+		
+        String jsonArrayString = gson.toJson(list);
+        System.out.println("JSON Array : " + jsonArrayString);			
+		model.addAttribute("linkedList", jsonArrayString);
 		
 		return "bems/elect_dashboard";
 	}

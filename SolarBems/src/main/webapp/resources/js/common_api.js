@@ -3,7 +3,7 @@ var clientType = 'web';
 
 
 // [디바이스 제어] json Data ==> To Flask API 
-const sendDeviceControl = (userId, arduId, controlObj) =>  {
+var sendDeviceControl = (userId, arduId, controlObj) =>  {
 	console.log('sendDeviceControl');
 	console.log(controlObj);
 		let sendData = {
@@ -38,7 +38,7 @@ const sendDeviceControl = (userId, arduId, controlObj) =>  {
 
 
 // [연동된 디바이스 조회] json list From Flask API
-const getLinkedDeviceList = (userId, arduId) => {
+var getLinkedDeviceList = (userId, arduId) => {
 
 	console.log('getLinkDeviceList ardu' + arduId);	
   let reqData = {
@@ -57,6 +57,7 @@ const getLinkedDeviceList = (userId, arduId) => {
     dataType : 'json',
     contentType : 'application/json; charset:UTF-8',
     success : data => {
+    	console.log(data);
 			result = data;
     },
     error : () => {

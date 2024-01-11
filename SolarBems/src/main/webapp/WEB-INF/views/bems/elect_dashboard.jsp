@@ -42,22 +42,16 @@
 
     <!-- Start container -->
     <div class="container-fluid py-2">
-      <div class="row">
-        <div class="col-lg-7 position-relative z-index-2">
-          <div class="card card-plain mb-1">
-            <div class="card-body p-0">
-              <h3 class="font-weight-bolder mb-0">전력 Dashboard</h3>
-            </div>
-          </div> <!-- End card  -->
-        </div>
-      </div><!-- End row -->
+     	<input type="hidden" id="userId" value="${sessionScope.user.userId}">
+     	<input type="hidden" id="arduId" value="${sessionScope.user.arduId}">
 
-      <!--  Start -->
+      <!--  Start Chart -->
       <div class="row">
+      	<!-- 조회기준 디바이스별 전력소비량 차트 -->
         <div class="col-lg-6">
           <div class="card">
             <div class="card-header pb-2 px-3 ">
-              <div id="chart1" class="w-100" style="height: 300px;"></div>
+              <div id="chart1" class="w-100" style="height: 400px;"></div>
             </div><!-- End card-header -->
           </div><!-- <div class="card"> -->
         </div> <!-- End  -->
@@ -65,7 +59,7 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-header pb-2 px-3 ">
-              <div id="chart2" class="w-100" style="height: 300px;"></div>
+              <div id="chart2" class="w-100" style="height: 400px;"></div>
             </div><!-- End card-header -->
           </div><!-- <div class="card"> -->
         </div> <!-- End  -->
@@ -125,6 +119,24 @@
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
   <script src="${contextPath}/resources/js/common_api.js"></script>
    <!-- solar chart func -->
+  <script src="${contextPath}/resources/js/common_api.js"></script>
+	<script type="text/javascript">
+	
+		$(document).ready(function() {
+			
+			const userId = $('#userId').val();
+			const arduId = $('#arduId').val();
+			let dbList = '<c:out value="${linkedList}" escapeXml="false"/>';
+			dbList = dbList.replaceAll('&#34;', '\"');
+			dbList = JSON.parse(dbList);
+			if(dbList == [] || dbList == '[]') {
+				dbList = [];
+			}
+			console.log('dbList');
+			console.log(dbList);
+		});
+	  
+	</script>  
   <script src="${contextPath}/resources/js/solar_chart.js"></script>
   
   </body>

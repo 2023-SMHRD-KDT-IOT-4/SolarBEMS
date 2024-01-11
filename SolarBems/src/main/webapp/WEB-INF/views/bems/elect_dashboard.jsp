@@ -39,7 +39,9 @@
     <nav id="topnav" class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" data-scroll="true">
     	<jsp:include page="../common/topnav.jsp" />
     </nav>
-
+		<!-- 전력제어 전환 Modal -->
+		<jsp:include page="../common/convertElecModal.jsp" />
+    
     <!-- Start container -->
     <div class="container-fluid py-2">
      	<input type="hidden" id="userId" value="${sessionScope.user.userId}">
@@ -51,7 +53,7 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-header pb-2 px-3 ">
-              <div id="chart1" class="w-100" style="height: 400px;"></div>
+              <div id="chart1" class="w-100" style="height: 300px;"></div>
             </div><!-- End card-header -->
           </div><!-- <div class="card"> -->
         </div> <!-- End  -->
@@ -59,7 +61,7 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-header pb-2 px-3 ">
-              <div id="chart2" class="w-100" style="height: 400px;"></div>
+              <div id="chart2" class="w-100" style="height: 300px;"></div>
             </div><!-- End card-header -->
           </div><!-- <div class="card"> -->
         </div> <!-- End  -->
@@ -80,12 +82,11 @@
           </div><!-- <div class="card"> -->
         </div> <!-- End  -->
 
+				<!-- 전력 생산량 관리 -->
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-header pb-2 px-3 ">
-              <div id="chart4" class="w-100" style="height: 300px;"></div>
-            </div><!-- End card-header -->
-          </div><!-- <div class="card"> -->
+          	<jsp:include page="../common/generateMgmtBody.jsp" />
+           </div><!-- card -->
         </div> <!-- End  -->
        
       </div><!-- End row  -->
@@ -145,6 +146,6 @@
 	  
 	</script>  
   <script src="${contextPath}/resources/js/solar_chart.js"></script>
-  
+  <script src="${contextPath}/resources/js/bems_generate_mgmt.js"></script>
   </body>
 </html>

@@ -39,12 +39,21 @@ $(document).ready(function() {
     });
     // let app = {};
     let option = {
+      title: {
+        text: '디바이스 별 전력 소비량',
+        // subtext: '(W)',
+        left: 'center'
+      },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
           type: 'shadow'
         }
       },
+        legend: {
+          orient: 'vertical',
+          left: 'right'
+        },
       grid: {
         left: '4%',
         right: '4%',
@@ -66,10 +75,13 @@ $(document).ready(function() {
           type: 'value'
         }
       ],
+    	// color : [
+      //  '#1be11b', '#ff0000'
+      // ],
       /// 전력 소비량
       series: [
         {
-          name: 'Direct',
+          name: '소비량(W)',
           type: 'bar',
           barWidth: '60%',
           data: dvcElecVals

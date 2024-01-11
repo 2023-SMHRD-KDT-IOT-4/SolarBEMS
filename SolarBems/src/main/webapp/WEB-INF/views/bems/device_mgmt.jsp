@@ -74,7 +74,7 @@
               <div class="row">
                 <!--  -->
                 <div class="col-md-7">
-                  <h6 class="pt-2" id="linkedCnt">연동 된 디바이스</h6>
+                  <h5 class="pt-2" id="linkedCnt">연동 된 디바이스</h5>
                 </div>
                 <!--  -->
                 <div class="col-md-5 d-flex justify-content-start justify-content-md-end align-items-center">

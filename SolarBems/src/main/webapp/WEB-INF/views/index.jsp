@@ -128,7 +128,7 @@
                             <i class="material-icons">link_off</i>
                             연동해제
                           </a>
-                          <a class="btn btn-link text-dark px-1 mb-0" href="./device_update.html">
+                          <a class="btn btn-link text-dark px-1 mb-0" href="javascript:;">
                             <i class="material-icons">edit</i>
                             수정
                           </a>
@@ -162,7 +162,7 @@
                             <i class="material-icons">link_off</i>
                             연동해제
                           </a>
-                          <a class="btn btn-link text-dark px-1 mb-0" href="./device_update.html">
+                          <a class="btn btn-link text-dark px-1 mb-0" href="javascript:;">
                             <i class="material-icons">edit</i>
                             수정
                           </a>

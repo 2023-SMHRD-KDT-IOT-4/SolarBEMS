@@ -39,28 +39,8 @@
     <nav id="topnav" class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" data-scroll="true">
     	<jsp:include page="../common/topnav.jsp" />
     </nav>
-
-    <!-- 전력제어 전환 Modal -->
-    <div class="modal fade" id="converModal" tabindex="-1" role="dialog" aria-labelledby="converModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title font-weight-normal" id="converModalLabel">전력제어 전환</h5>
-            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            정말 배터리전기 제어방식으로 전환 하시겠습니까?
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="converBtn" class="btn bg-gradient-primary">전환하기</button>
-            <button type="button" class="btn bg-gradient-dark" data-bs-dismiss="modal">취소</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End Modal -->
+		<!-- 전력제어 전환 Modal -->
+		<jsp:include page="../common/convertElecModal.jsp" />
     
     <!-- Start container -->
     <div class="container-fluid py-2">
@@ -79,55 +59,8 @@
 
             </div><!-- End card-header -->
 
-            <div class="card-body px-4 pb-1">
-              <div class="d-flex justify-content-center align-items-center">
-                <h4 class="text-dark" id="elecStatusH4">전력제어 상태 : </h4>
-              </div>
-              <hr class="dark horizontal my-1">
-              <div class="row">
-                <!-- 배터리 잔량 표시 -->
-                <div class="col-md-6 d-flex justify-content-center align-items-center mb-3 ">
-                  
-                  <!-- prgoress-bar 클래스에 bg-gradient-success => bg-gradient-warning => bg-gradient-danger -->
-                  <!--  prgoress-bar 스타일 width 값 조정 -->
-                  <div class="progress-wrapper">
-                    <div class="progress-info">
-                      <div class="progress-percentage">
-                        <span class="text-sm font-weight-normal" id="remainBatteryAmount">태양광 배터리 잔량 : </span>
-                      </div>
-                    </div>
-                    <div class="progress" style="height: 20px;">
-                      <div class="progress-bar" id="remainBatteryBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 90%; height: 20px;"></div>
-                    </div>
-                  </div>
+							<jsp:include page="../common/generateMgmtBody.jsp" />
 
-                </div><!-- col end -->
-
-                <div class="col-md-6 d-flex justify-content-center align-items-center ps-4">
-                  <form>
-                  	<input type="hidden" id="sendPinId" value="">
-                  	<input type="hidden" id="userId" value="${sessionScope.user.userId}">
-                  	<input type="hidden" id="arduId" value="${sessionScope.user.arduId}" />
-                    <h6>전력제어 상태 전환</h6>
-                    <!-- 전기 사용상태 토글 -->
-                    <div class="togglebutton form-check form-switch">
-                      <!-- disabled -->
-                      <input class="form-check-input" type="checkbox" id="elecStatusCheckbox" checked>
-                      <label class="form-check-label" for="elecStatusCheckbox">배터리전기 / 일반전기</label>
-                    </div>
-                  </form>
-                </div>
-
-              </div><!-- end row -->
-
-              <hr class="dark horizontal my-1">
-
-	              <div class="card-footer d-flex justify-content-center align-items-center pb-0 pt-3">
-	                  <button type="button" class="btn bg-gradient-primary w-70" data-bs-toggle="modal" data-bs-target="#converModal" data-bs-param="1">
-	                    전력제어 전환
-	                  </button>
-                </div>
-              </div><!-- card-body -->
 
             </div><!-- card -->
           </div>

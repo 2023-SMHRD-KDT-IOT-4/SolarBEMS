@@ -1,6 +1,19 @@
 $(document).ready(function() {
 	console.log('bems_generate_mgmt');
 	
+	const toastTrigger = document.getElementById('converBtn'); // 전환하기 버튼
+	const toastLive = document.getElementById('successToast');
+
+	if (toastTrigger) {
+  	const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLive)
+  	toastTrigger.addEventListener('click', () => {
+  	console.log('ttt');
+	  	setTimeout(function () {
+			  toastBootstrap.show();
+			}, 1500);
+	  });
+	}  	
+	
 	// 페이지 로딩시 전력 생산량 및 제어상태 정보(json data) From Flask API
 	getElecGenerate();
 	
@@ -97,6 +110,8 @@ const getElecGenerate = () => {
     			
 		if(!result || Object.keys(result).length == 0 ) {
 			alert('디바이스 제어 실패');
+		} else {
+			$('#converModal').modal('hide');
 		}
 	
 }// sendToFlask

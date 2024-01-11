@@ -84,6 +84,21 @@
 
 				<!-- 전력 생산량 관리 -->
         <div class="col-lg-6">
+			 		<!-- Toast -->    
+			    <div class="position-fixed bottom-1 end-1 z-index-2">
+			      <div class="toast" id="successToast" role="alert" 
+			      			aria-live="assertive" aria-atomic="true" 
+			      			data-bs-delay="3000">
+			        <div class="toast-header">
+			        <i class="material-icons text-success me-2">check</i>
+			          <strong class="me-auto" id="toast-header">디바이스 제어</strong>
+			          <!-- <small>11 mins ago</small> -->
+			          <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close" aria-hidden="true"></i>
+			        </div>
+			        <div class="toast-body">제어 성공</div>
+			      </div><!-- End Toast  -->
+			    </div><!--End position Toast -->
+			            
           <div class="card">
           	<jsp:include page="../common/generateMgmtBody.jsp" />
            </div><!-- card -->

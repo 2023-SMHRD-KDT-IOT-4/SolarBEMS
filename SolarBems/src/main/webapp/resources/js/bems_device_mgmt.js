@@ -2,6 +2,18 @@ $(document).ready(function() {
 	const controlDiv = $('#controlDiv');
   let hostIndex = location.href.indexOf( location.host ) + location.host.length;
   let contextPath = location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+  
+	const toastTrigger = document.getElementById('controlExecuteBtn'); // 제어 전송버튼
+	const toastLive = document.getElementById('successToast');
+
+	if (toastTrigger) {
+  	const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLive)
+  	toastTrigger.addEventListener('click', () => {
+	  	setTimeout(function () {
+			  toastBootstrap.show();
+			}, 1500);
+	  });
+	}  
   		
   // 관리화면 >  연동해제 아이콘 클릭 시 모달창 출력
   $('#linkOffModal').on('show.bs.modal', e => {
@@ -69,13 +81,14 @@ $(document).ready(function() {
       "powerVal": powerVal
 	  }
 	  console.log(controlObj);
-	  // =====================================================
-    let result = sendDeviceControl(userId, arduId, controlObj);
-    console.log(result);
-		if(!result) {
+     let result = sendDeviceControl(userId, arduId, controlObj);
+     console.log(result);
+		 if(!result) {
 			alert('디바이스 제어 실패');
-		}
-    console.log(result);  
+		 } else {
+     	console.log(result);  
+
+		 }
 
   }); // $('#controlExecuteBtn')
 
@@ -159,7 +172,6 @@ const makeTableBody = (dbList, datas) => {
   console.log(dbList);
   console.log(datas);
   
-  
   $('#linkedDviceBody').html('');
   let tableTag = '';
 
@@ -176,8 +188,9 @@ const makeTableBody = (dbList, datas) => {
     tableTag += '<td class="align-middle text-center">';
     tableTag += '<span class="text-dark text-md font-weight-normal">'+value.dvcTypeName +'</span>';
     tableTag += '</td>';
+    // 운전상태
     tableTag += '<td class="align-middle text-center">';
-    tableTag += '<span id="powerStatusSpan'+(key+1)+'"'+ ' class="text-dark text-md font-weight-normal"></span>';
+    tableTag += '<span id="powerStatusSpan'+(key+1)+'"'+ ' class="badge"></span>';
     tableTag += '</td>';
     tableTag += '<td class="align-middle text-center">';
     tableTag += '<span id="powerValSpan'+(key+1)+'"'+ ' class="text-dark text-md font-weight-normal"></span>';
@@ -212,7 +225,15 @@ const makeTableBody = (dbList, datas) => {
   const devices = datas['device'];
 
   $.each(devices, (key,value) => {	
-    let powerStatus = value['powerStatus'] == 1 ? 'ON' : 'OFF';
+  
+  	let powerStatus = '';
+  	if(value['powerStatus'] == 1) {
+  		powerStatus = 'ON';
+  		$('#powerStatusSpan'+(key+1)).addClass('bg-gradient-success');
+  	} else {
+  		powerStatus = 'OFF';
+  		$('#powerStatusSpan'+(key+1)).addClass('bg-gradient-secondary');
+  	}
     let powerVal = value['powerVal'];
     let motorPowerVal = "";
     
@@ -223,6 +244,7 @@ const makeTableBody = (dbList, datas) => {
 		} else if(powerVal > 200) { // 약
 			motorPowerVal = "약";
 		}
+    
     $('#powerStatusSpan'+(key+1)).html(powerStatus);
     $('#powerValSpan'+(key+1)).html(powerVal);
     if(value['dvcId'] === 'dvc003') {

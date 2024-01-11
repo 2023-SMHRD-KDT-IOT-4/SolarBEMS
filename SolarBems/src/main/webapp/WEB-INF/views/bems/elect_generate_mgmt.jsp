@@ -42,6 +42,21 @@
 		<!-- 전력제어 전환 Modal -->
 		<jsp:include page="../common/convertElecModal.jsp" />
     
+ 		<!-- Toast -->    
+    <div class="position-fixed bottom-5 start-50 z-index-2">
+      <div class="toast" id="successToast" role="alert" 
+      			aria-live="assertive" aria-atomic="true" 
+      			data-bs-delay="3000">
+        <div class="toast-header">
+        <i class="material-icons text-success me-2">check</i>
+          <strong class="me-auto" id="toast-header">디바이스 제어</strong>
+          <!-- <small>11 mins ago</small> -->
+          <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close" aria-hidden="true"></i>
+        </div>
+        <div class="toast-body">제어 성공</div>
+      </div><!-- End Toast  -->
+    </div><!--End position Toast -->
+    
     <!-- Start container -->
     <div class="container-fluid py-2">
     

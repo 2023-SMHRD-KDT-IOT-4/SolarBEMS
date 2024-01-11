@@ -48,7 +48,7 @@
           <div class="modal-header">
             <h5 class="modal-title font-weight-normal" id="linkOffModalLabel">디바이스 연동해제</h5>
             <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
-              <span class="fas fa-times text-md ms-3" aria-hidden="true"></span>
+              <span class="fas fa-times text-md d-flex justify-content-center" aria-hidden="true"></span>
             </button>
           </div>
           <div class="modal-body" id="linkOffModalBody"></div>
@@ -223,6 +223,7 @@
   <!-- Solar Files  -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="${contextPath}/resources/js/common_api.js"></script>
+	<script src="${contextPath}/resources/js/common_bems.js"></script>
 	<script type="text/javascript">
 	
 		$(document).ready(function() {
@@ -244,7 +245,7 @@
 		});
 	  
 	</script>
-	<script src="${contextPath}/resources/js/bems_device_mgmt.js"></script>
+  <script src="${contextPath}/resources/js/bems_device_mgmt.js"></script>
 	
   </body>
 </html>

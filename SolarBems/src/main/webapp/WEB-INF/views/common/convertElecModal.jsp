@@ -8,7 +8,7 @@
           <div class="modal-header">
             <h5 class="modal-title font-weight-normal" id="converModalLabel">전력제어 전환</h5>
             <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
-              <span class="fas fa-times text-md ms-3" aria-hidden="true"></span>
+              <span class="fas fa-times text-md d-flex justify-content-center" aria-hidden="true"></span>
             </button>
           </div>
           <div class="modal-body">

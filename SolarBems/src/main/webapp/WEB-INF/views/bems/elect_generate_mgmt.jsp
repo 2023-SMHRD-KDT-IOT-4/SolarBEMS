@@ -90,7 +90,7 @@
 <script src="${contextPath}/resources/js/core/bootstrap.min.js" ></script>
 <script src="${contextPath}/resources/js/plugins/perfect-scrollbar.min.js" ></script>
 <script src="${contextPath}/resources/js/plugins/smooth-scrollbar.min.js" ></script>
-
+<script src="${contextPath}/resources/js/common_bems.js"></script>
 <script>
   var win = navigator.platform.indexOf('Win') > -1;
   if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -108,6 +108,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="${contextPath}/resources/js/common_api.js"></script>
   <script src="${contextPath}/resources/js/bems_generate_mgmt.js"></script>
+  
   
   </body>
 </html>

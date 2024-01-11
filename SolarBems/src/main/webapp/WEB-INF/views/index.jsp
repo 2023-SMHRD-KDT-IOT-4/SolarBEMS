@@ -49,7 +49,7 @@
         <div class="col-md-10 mb-3">
           <div class="card">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 ">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg py-1">
+              <div class="bg-gradient-info shadow-primary border-radius-lg py-1">
                 <h4 class="text-white text-capitalize ps-3">Solar BEMS</h4>
                 <span class="text-white text-capitalize ps-3">지능형 IoT를 이용한 빌딩 에너지관리 시스템입니다.</span>
               </div>

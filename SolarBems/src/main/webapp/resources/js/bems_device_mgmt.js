@@ -11,7 +11,9 @@ $(document).ready(function() {
   	toastTrigger.addEventListener('click', () => {
 	  	setTimeout(function () {
 			  toastBootstrap.show();
-			}, 1500);
+				// 제어전송 버튼 spinner 해제
+				applySpinnerBtn('controlExecuteBtn', '제어전송', false);
+			}, 2000);
 	  });
 	}  
   		
@@ -61,7 +63,9 @@ $(document).ready(function() {
   
   // 디바이스 제어 > 제어전송 버튼 클릭 ==> Flask API 
   $('#controlExecuteBtn').on("click", () => {
-  
+  	// 제어전송 버튼 spinner 처리
+  	applySpinnerBtn('controlExecuteBtn', '제어전송', true);
+    
 		const userId = $('#userId').val();
 		const arduId = $('#arduId').val();
 		const pinId = $('#sendPinId').val(); 
@@ -85,10 +89,8 @@ $(document).ready(function() {
      console.log(result);
 		 if(!result) {
 			alert('디바이스 제어 실패');
-		 } else {
-     	console.log(result);  
-
-		 }
+		 } 
+		 
 
   }); // $('#controlExecuteBtn')
 

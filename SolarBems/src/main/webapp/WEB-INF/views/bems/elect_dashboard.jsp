@@ -136,6 +136,7 @@
   <script src="${contextPath}/resources/js/common_api.js"></script>
    <!-- solar chart func -->
   <script src="${contextPath}/resources/js/common_api.js"></script>
+  <script src="${contextPath}/resources/js/common_bems.js"></script>
 	<script type="text/javascript">
 	
 		$(document).ready(function() {
@@ -162,5 +163,7 @@
 	</script>  
   <script src="${contextPath}/resources/js/solar_chart.js"></script>
   <script src="${contextPath}/resources/js/bems_generate_mgmt.js"></script>
+  
+  
   </body>
 </html>

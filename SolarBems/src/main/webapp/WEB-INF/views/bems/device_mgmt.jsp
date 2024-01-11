@@ -141,6 +141,7 @@
               <form>
                 <div class="row">
                   <div class="col-md-5 d-flex justify-content-center align-items-center mt-3">
+                  	<input type="hidden" id="clickDvcId" value="" />
                   	<input type="hidden" id="clickPowerStatus" value="" />
                   	<input type="hidden" id="clickPowerVal" value="" />
                   	<input type="hidden" id="sendPinId" value="" />
@@ -154,9 +155,14 @@
                   <!-- 설정값 -->
                   <div class="col-md-7 d-flex justify-content-center ">
                     <div class="input-group input-group-static w-60">
-                      <label >설정값</label>
-                      <label id="powerType"></label>
-                      <input type="number" class="form-control" id="poewrVal" value=""><!-- disabled -->
+	                     <label id="powerType" class="ms-0" ></label>
+	                     	<!-- 운전설정 수치 -->
+	                     	<input type="number" class="form-control" id="poewrValNum" name="pwerVal" value="">
+											  <select id="poewrValSelec" name="pwerVal" class="form-control" >
+											    <option value="50">강</option>
+											    <option value="125">중</option>
+											    <option value="200">약</option>
+											  </select>
                     </div>
                   </div>
                 </div>

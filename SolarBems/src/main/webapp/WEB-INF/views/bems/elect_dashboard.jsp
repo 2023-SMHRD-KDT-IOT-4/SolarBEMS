@@ -126,6 +126,7 @@
 			
 			const userId = $('#userId').val();
 			const arduId = $('#arduId').val();
+			
 			let dbList = '<c:out value="${linkedList}" escapeXml="false"/>';
 			dbList = dbList.replaceAll('&#34;', '\"');
 			dbList = JSON.parse(dbList);
@@ -134,6 +135,12 @@
 			}
 			console.log('dbList');
 			console.log(dbList);
+			
+		  // 페이지 로딩시 연동된 디바이스 json list From Flask API
+		  let result = getLinkedDeviceList(userId, arduId);
+			getRealTimeDeviceConsume('chart1', result, dbList); // 조회기준 디바이스별 전력소비량 차트
+			
+			
 		});
 	  
 	</script>  

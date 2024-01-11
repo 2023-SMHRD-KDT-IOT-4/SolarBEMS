@@ -1,75 +1,83 @@
 
 $(document).ready(function() {
-  console.log('dash');
-	
-  const userId = $('#userId').val();
-	const arduId = $('#arduId').val();
+  console.log('solar chart');
   
-  // 페이지 로딩시 연동된 디바이스 json list From Flask API
-  let result = getLinkedDeviceList(userId, arduId);
-	getRealTimeDeviceConsume('chart1', result); // 조회기준 디바이스별 전력소비량 차트
-	
 });
 
-	// 조회기준 디바이스별 전력소비량 차트
-	const getRealTimeDeviceConsume = (chartId, apiDatas) => {
-	
-		let dvcs = apiDatas['device'];
-	  if(JSON.stringify(apiDatas) == '{}') {
-	    console.log('no data');
-	    dvcs = [];
-	  }
-	   
-	  // Flask 받은 데이터 빈값 체크
-	  console.log(dvcs);
-	  let dvcPins = dvcs.map(dvc => dvc['pinId']+'핀');
-	  let dvcElecVals= dvcs.map(dvc => dvc['dvcElecVal'] );
-	
-	  // 차트 그리기
-	  let chartDiv = document.getElementById(chartId);
-	  let myChart = echarts.init(chartDiv, null, {
-	    renderer: 'canvas',
-	    useDirtyRect: false
-	  });
-	  // let app = {};
-	  let option = {
-	    tooltip: {
-	      trigger: 'axis',
-	      axisPointer: {
-	        type: 'shadow'
-	      }
-	    },
-	    grid: {
-	      left: '4%',
-	      right: '4%',
-	      bottom: '3%',
-	      containLabel: true
-	    },
-	    xAxis: [
-	      {
-	        type: 'category',
-	        data: dvcPins,
-	        axisTick: {
-	          alignWithLabel: true
-	        }
-	      }
-	    ],
-	    yAxis: [
-	      {
-	        type: 'value'
-	      }
-	    ],
-	    series: [
-	      {
-	        name: 'Direct',
-	        type: 'bar',
-	        barWidth: '60%',
-	        data: dvcElecVals
-	      }
-	    ]
-	  };
-	
-	  if (option && typeof option === 'object') {
-	    myChart.setOption(option);
-	  }
-	} // End getRealTimeDeviceConsume
+ // 조회기준 디바이스별 전력소비량 차트
+  const getRealTimeDeviceConsume = (chartId, datas, dbDatas) => {
+
+    if(dbDatas == [] || dbDatas.length == 0 ) {
+      console.log('no db data');
+    }
+  //  Flask 받은 데이터 빈값 체크
+    if(Object.keys(datas).length == 0 || datas === undefined) {
+      console.log('no api linked data');
+    }
+    let apiDatas = datas['device'];
+
+    let dvclNames = [];
+    let dvcElecVals= [];
+    dbDatas.forEach((dvcDb, idx) => {
+      // 소비 디바이스
+      if(dvcDb['dvcElecCode'] == 'u')  {
+        dvclNames.push(dvcDb['dvclName']);
+        // 일치하는 핀 필터
+        let curDvc = apiDatas.filter(dvc => dvc['pinId']== dvcDb['pinId']);
+        curDvc = curDvc.length != 0 ? curDvc[0] : { 'dvcElecVal' : 20};
+
+        let curElecVal = curDvc['dvcElecVal'];
+        dvcElecVals.push(curElecVal);
+      }
+  });
+
+    // 차트 그리기
+    let chartDiv = document.getElementById(chartId);
+    let myChart = echarts.init(chartDiv, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    // let app = {};
+    let option = {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      grid: {
+        left: '4%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      // x축 ==> 디바이스 설정 이름
+      xAxis: [
+        {
+          type: 'category',
+          data: dvclNames,
+          axisTick: {
+            alignWithLabel: true
+          }
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value'
+        }
+      ],
+      /// 전력 소비량
+      series: [
+        {
+          name: 'Direct',
+          type: 'bar',
+          barWidth: '60%',
+          data: dvcElecVals
+        }
+      ]
+    };
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+  } // End getRealTimeDeviceConsume

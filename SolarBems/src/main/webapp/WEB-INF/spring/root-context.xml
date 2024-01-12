@@ -5,13 +5,18 @@
 	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
+	<!-- External properties file configuration -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="location" value="classpath:com/smhrd/solar/config/hikariProperties2.properties"/>
+	</bean>
+    
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-	  <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-	  <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/jsp?serverTimezone=UTC&amp;characterEncoding=UTF-8"/>
-	  <property name="username" value="root"/>
-	  <property name="password" value="1234"/>
-	</bean>	
+	     <property name="driverClassName" value="${hikari.driver-class-name}"/>
+	     <property name="jdbcUrl" value="${hikari.jdbc-url}"/>
+	     <property name="username" value="${hikari.username}"/>
+	     <property name="password" value="${hikari.password}"/>
+ 	</bean>
 	
 	<!-- 2. DataSource : Spring 통해서 MySQL에 접근 -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">

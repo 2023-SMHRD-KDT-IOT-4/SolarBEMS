@@ -88,7 +88,6 @@ public class UserController {
             loginUser.setUserPw(user.getUserPw());
             loginUser.setUserNick(user.getUserNick());
             loginUser.setBuildingName(user.getBuildingName());
-            loginUser.setRoomNumber(user.getRoomNumber());
 
             userMapper.userUpdate(loginUser);
 

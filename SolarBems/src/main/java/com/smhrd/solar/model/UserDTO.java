@@ -10,8 +10,6 @@ public class UserDTO {
     private String userNick;
     // 빌딩이름 
     private String buildingName;
-    // 빌딩 방 갯수
-    private int roomNumber;
     // '아두이노 고유아이디. bems 시공 완료 후 사용자 인계'
     private String arduId;
     // 사용자 가입일시
@@ -25,14 +23,13 @@ public class UserDTO {
 		this.userPw = userPw;
 	}
 	
-	public UserDTO(String userId, String userPw, String userNick, String buildingName, int roomNumber, String arduId,
+	public UserDTO(String userId, String userPw, String userNick, String buildingName, String arduId,
 			String joinedAt) {
 		super();
 		this.userId = userId;
 		this.userPw = userPw;
 		this.userNick = userNick;
 		this.buildingName = buildingName;
-		this.roomNumber = roomNumber;
 		this.arduId = arduId;
 		this.joinedAt = joinedAt;
 	}
@@ -61,12 +58,6 @@ public class UserDTO {
 	public void setBuildingName(String buildingName) {
 		this.buildingName = buildingName;
 	}
-	public int getRoomNumber() {
-		return roomNumber;
-	}
-	public void setRoomNumber(int roomNumber) {
-		this.roomNumber = roomNumber;
-	}
 	public String getJoinedAt() {
 		return joinedAt;
 	}
@@ -85,7 +76,7 @@ public class UserDTO {
 	@Override
 	public String toString() {
 		return "UserDTO [userId=" + userId + ", userPw=" + userPw + ", userNick=" + userNick + ", buildingName="
-				+ buildingName + ", roomNumber=" + roomNumber + ", arduId=" + arduId + ", joinedAt=" + joinedAt + "]";
+				+ buildingName + ", arduId=" + arduId + ", joinedAt=" + joinedAt + "]";
 	}
     
 }

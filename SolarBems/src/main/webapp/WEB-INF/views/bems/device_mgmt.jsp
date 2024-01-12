@@ -176,7 +176,7 @@
 											  <select id="poewrValSelec" name="pwerVal" class="form-control" >
 											    <option value="50">강</option>
 											    <option value="125">중</option>
-											    <option value="200">약</option>
+											    <option value="180">약</option>
 											  </select>
                     </div>
                   </div>

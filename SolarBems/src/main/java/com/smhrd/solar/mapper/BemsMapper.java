@@ -24,11 +24,15 @@ public interface BemsMapper {
 	// 연동된 디바이스 삭제
 	public int deleteLinkedDevice(Integer linkId);
 	
-	public int getDeviceLinkId(@Param("arduId") String arduId,
-								@Param("pinId") String pinId);
+
+	public int getDeviceLinkId(@Param("arduId") String arduId, @Param("pinId") int pinId);
 	
 	// 디바이스 전력 생산량 insert
 	public int insertGeneratedElec(DeviceGeneratedElecDTO dto);
 	// 디바이스 전력 소비량 insert
 	public int insertUsedElec(DeviceUsedElecDTO dto);
+	// 디바이스의 마지막 전력 생산량 저장 시간 조회
+	public String getLastGenerated(Integer linkId);
+	// 디바이스의 마지막 전력 소비량저장 시간 조회
+	public String getLastUsed(Integer linkId);
 }

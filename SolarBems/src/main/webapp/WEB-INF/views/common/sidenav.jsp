@@ -83,7 +83,7 @@
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">battery_charging_full</i>
           </div>
-          <span class="nav-link-text ms-1">전력 생산량 관리</span>
+          <span class="nav-link-text ms-1">전력 제어 관리</span>
         </a>
       </li>
 

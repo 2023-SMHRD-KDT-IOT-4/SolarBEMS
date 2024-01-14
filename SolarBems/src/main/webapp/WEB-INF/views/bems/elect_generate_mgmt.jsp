@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="${contextPath}/resources/img/apple-icon.png">
   <link rel="icon" type="image/png" href="${contextPath}/resources/img/favicon.png">
   <title>
-    Solar BEMS 전력 생산량 관리
+    Solar BEMS 전력 제어 관리
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,600,700,900|Roboto+Slab:400,700" />
@@ -46,7 +46,7 @@
     <div class="position-fixed bottom-5 start-50 z-index-2">
       <div class="toast" id="successToast" role="alert" 
       			aria-live="assertive" aria-atomic="true" 
-      			data-bs-delay="3000">
+      			data-bs-delay="1500">
         <div class="toast-header">
         <i class="material-icons text-success me-2">check</i>
           <strong class="me-auto" id="toast-header">디바이스 제어</strong>

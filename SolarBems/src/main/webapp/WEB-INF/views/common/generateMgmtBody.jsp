@@ -46,7 +46,7 @@
 	  <hr class="dark horizontal my-1">
 	
 	   <div class="card-footer d-flex justify-content-center align-items-center pb-0 pt-3">
-	       <button type="button" class="btn bg-gradient-primary w-50" data-bs-toggle="modal" data-bs-target="#converModal" data-bs-param="1">
+	       <button id="converModal" type="button" class="btn bg-gradient-primary w-50" data-bs-toggle="modal" data-bs-target="#converModal" data-bs-param="1">
 	         전력제어 전환
 	       </button>
 	    </div>

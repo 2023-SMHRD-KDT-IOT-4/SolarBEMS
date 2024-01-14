@@ -1,3 +1,5 @@
+// 전력제어 관리
+
 $(document).ready(function() {
 	console.log('bems_generate_mgmt');
 	
@@ -13,6 +15,25 @@ $(document).ready(function() {
 			}, 1500);
 	  });
 	}  	
+	
+	
+  // 전력제어 전환 버튼 클릭 ==> 모달창 출력
+  $('#converModal').on('show.bs.modal', e => {
+    
+    const dataset = e.relatedTarget.dataset;
+    console.log(dataset);
+	  let elecMsg = '';
+	  if( $('#elecStatusCheckbox').is(":checked") )  {
+	  	elecMsg = '정말 일반전기 제어방식으로 전환 하시겠습니까?';
+  	} else {
+	  	elecMsg = '정말 배터리전기 제어방식으로 전환 하시겠습니까?';
+  	}
+		console.log(elecMsg);
+		$('#convertElecModalBody').html(elecMsg);
+    
+    
+    
+	});
 	
 	// 페이지 로딩시 전력 생산량 및 제어상태 정보(json data) From Flask API
 	getElecGenerate();

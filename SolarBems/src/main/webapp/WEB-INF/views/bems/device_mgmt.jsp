@@ -65,7 +65,7 @@
     <div class="position-fixed bottom-5 end-1 z-index-2">
       <div class="toast" id="successToast" role="alert" 
       			aria-live="assertive" aria-atomic="true" 
-      			data-bs-delay="3000">
+      			data-bs-delay="1500">
         <div class="toast-header">
         <i class="material-icons text-success me-2">check</i>
           <strong class="me-auto" id="toast-header">디바이스 제어</strong>

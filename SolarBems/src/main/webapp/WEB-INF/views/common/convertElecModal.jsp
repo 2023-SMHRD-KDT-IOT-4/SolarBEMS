@@ -11,9 +11,7 @@
               <span class="fas fa-times text-md d-flex justify-content-center" aria-hidden="true"></span>
             </button>
           </div>
-          <div class="modal-body">
-            정말 배터리전기 제어방식으로 전환 하시겠습니까?
-          </div>
+          <div class="modal-body" id="convertElecModalBody"></div>
           <div class="modal-footer">
             <button type="button" id="converBtn" class="btn bg-gradient-primary">전환하기</button>
             <button type="button" class="btn bg-gradient-dark" data-bs-dismiss="modal">취소</button>

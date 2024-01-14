@@ -13,7 +13,7 @@ $(document).ready(function() {
 			  toastBootstrap.show();
 				// 제어전송 버튼 spinner 해제
 				applySpinnerBtn('controlExecuteBtn', '제어전송', false);
-			}, 2000);
+			}, 1500);
 	  });
 	}  
   		

@@ -14,8 +14,8 @@ public interface UserMapper {
 	public UserDTO getUser(String userId);
 	
 	// 회원 가입 
-	void userJoin(UserDTO user);
+	public int userJoin(UserDTO user);
 	
 	// 회원 정보 수정
-	void userUpdate(UserDTO user);
+	public int userUpdate(UserDTO user);
 }

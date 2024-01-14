@@ -1,7 +1,6 @@
 let idCheck = 0;
 let pwcheck = false;
 
-
 // 비밀번호 체크
 $('#userPw1, #userPw2').keyup( () => {
     const userPw1 = $('#userPw1');
@@ -68,7 +67,7 @@ const checkInput = () => {  // 회원가입 형식 체크하고 전송
     }
     
     if(pwcheck) {
-    	$('#joinForm').submit();
+    	$('#updateForm').submit();
   	}
 
 }

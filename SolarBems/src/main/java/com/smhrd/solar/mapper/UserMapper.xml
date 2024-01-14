@@ -19,7 +19,7 @@
 		<!-- 회원 가입 -->
 		<insert id="userJoin" parameterType="user">
 			INSERT INTO user_info(user_id, user_pw, user_nick, building_name, ardu_id)
-			VALUES (#{userId}, #{userPw}, #{userNick}, #{buildingName}, #{arduId})
+			VALUES (#{userId}, SHA2(#{userPw}, 256), #{userNick}, #{buildingName}, #{arduId})
 		</insert>
 		
 		<!-- 회원정보 수정 -->

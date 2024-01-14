@@ -99,7 +99,7 @@
       <span class="mask bg-gray-100 opacity-6"></span>
       <div class="container my-auto">
         <div class="row">
-          <div class="col-lg-4 col-md-8 col-12 mx-auto">
+          <div class="col-lg-4 col-md-8 col-12 mx-auto mt-5">
             <div class="card z-index-0 fadeIn3 fadeInBottom">
               <div class="card-header p-1 position-relative mt-n4 mx-3 z-index-2">
                 <div class="bg-gradient-info shadow-primary border-radius-lg py-1 pe-1">
@@ -110,7 +110,7 @@
               </div>
               <!-- 회원가입 입력폼. div .is-valid .is-invalid -->
               <div class="card-body pb-0 pt-3">
-                <form action="/member/signUp" id="signUpForm" role="form"  class="text-start" method="post">
+                <form id="joinForm" action="${contextPath}/user/joinDatabase"  role="form"  class="text-start" method="post">
 
                   <div class="input-group input-group-outline mb-2">
                     <label class="form-label">아이디</label>
@@ -126,26 +126,25 @@
                   </div>
                   <div class="input-group input-group-outline mb-2">
                     <label class="form-label">닉네임</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" id="userNick" name="userNick">
                   </div>
                   <div class="input-group input-group-outline mb-2">
                     <label class="form-label">빌딩 이름</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" id="buildingName" name="buildingName">
                   </div>
                   <div class="input-group input-group-outline mb-2">
-                    <label class="form-label">방 갯수</label>
-                    <input type="number" class="form-control">
+                    <label class="form-label">아두이노 아이디</label>
+                    <input type="text" class="form-control" id="arduId" name="arduId">
                   </div>
-                  <!-- 아두이노 아이디 -->
                   <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 my-2 mb-3" onclick="sendIt()">
+                   <button type="button" class="btn bg-gradient-primary w-100 my-2 mb-3" onclick="checkInput()">
                       가입하기
-                    </button>        
+                    </button>  
                   </div>
                   <div class="card-footer text-center pt-1 pb-1  px-lg-2 px-1">
                     <p class="mb-2 text-sm mx-auto">
                       기존 계정이 있으십니까?
-                      <a href="./login.html" class="text-primary text-gradient font-weight-bold">로그인</a>
+                      <a href="${contextPath}/user/login" class="text-primary text-gradient font-weight-bold">로그인</a>
                     </p>
                   </div>
                  
@@ -181,5 +180,6 @@
   <!-- Solar Files  -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="${contextPath}/resources/js/solar_join.js"></script>
+  
   </body>
 </html>

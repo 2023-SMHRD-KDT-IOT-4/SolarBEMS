@@ -55,7 +55,10 @@
       </li>
 		</c:if>
 		
-		<c:if test="${!empty sessionScope.user }">
+		<c:if test="${not empty sessionScope.user }">
+      <li class="nav-item d-flex align-items-center mx-2 text-dark">
+          <span class="d-sm-inline d-none">${sessionScope.user.userNick} 님</span>
+      </li>
       <li class="nav-item d-flex align-items-center mx-2">
         <a href="${contextPath}/user/logout" class="nav-link text-body font-weight-bold px-0">
           <i class="fa fa-sign-in text-dark" aria-hidden="true"></i>

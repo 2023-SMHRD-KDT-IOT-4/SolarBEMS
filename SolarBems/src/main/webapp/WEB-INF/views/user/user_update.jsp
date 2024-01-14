@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
@@ -91,45 +91,36 @@
               </div>
               <!-- 회원수정 입력폼. div .is-valid .is-invalid -->
               <div class="card-body pb-0 pt-3">
-                <form role="form"  class="text-start">
+               <form id="updateForm" action="updateData" role="form"  class="text-start" method="POST">
 
-                  <div class="input-group input-group-static mb-1">
+                  <div class="input-group input-group-static mb-3">
                     <label >아이디</label>
-                    <input type="text" class="form-control" disabled value="solar">
+                    <input type="text" id="userId" name="userId" class="form-control" readonly="readonly" value="${sessionScope.user.userId}">
                   </div>
-                  <div class="input-group input-group-static mb-1">
-                    <label id="pw1">비밀번호</label>
-                    <input type="password" class="form-control">
+                  <div class="input-group input-group-outline mb-1" id="userPwDiv1">
+                    <label class="form-label">비밀번호 (최소 4자리 최대 16자리 입력)</label>
+                    <input type="password" class="form-control" id="userPw1" name="userPw1" placeholder=""  maxlength="16" onkeyup="checkPw()">
                   </div>
-                  <div class="input-group input-group-static mb-1">
-                    <label id="pw2">비밀번호 확인</label>
-                    <input type="password" class="form-control">
+                  <div class="input-group input-group-outline mb-1" id="userPwDiv2">
+                    <label class="form-label">비밀번호 확인</label>
+                    <input type="password" class="form-control" id="userPw2" name="userPw2" maxlength="16" onkeyup="checkPw()">
                   </div>
                   <div class="input-group input-group-static mb-1">
                     <label>닉네임</label>
-                    <input type="text" class="form-control" value="솔라팀">
+                    <input type="text" class="form-control" id="userNick" name="userNick" value="${sessionScope.user.userNick}">
                   </div>
                   <div class="input-group input-group-static mb-1">
                     <label>빌딩 이름</label>
-                    <input type="text" class="form-control" value="솔라빌딩">
+                    <input type="text" class="form-control" id="buildingName" name="buildingName" value="${sessionScope.user.buildingName}">
                   </div>
                   <div class="input-group input-group-static mb-1">
-                    <label>방 갯수</label>
-                    <input type="number" class="form-control" value="5">
+                    <label>아두이노 아이디</label>
+                    <input type="text" class="form-control" id="arduId" name="arduId" value="${sessionScope.user.arduId}" readonly="readonly">
                   </div>
-                  <!-- 회원가입 동의부분 -->
-                  <!-- <div class="form-check form-check-info text-start ps-0">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-                    <label class="form-check-label" for="flexCheckDefault">
-                      I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
-                    </label>
-                  </div> -->
                   <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 my-2 mb-3">
-                      회원정보 수정하기
-                    </button>
+                    <input type="button" class="btn bg-gradient-primary w-100 my-2 mb-3" value="회원정보 수정" onclick="checkInput()">
                   </div>
-                 
+                  
                 </form>
               </div>
             </div>
@@ -161,6 +152,7 @@
 
   <!-- Solar Files  -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="${contextPath}/resources/js/solar_update.js"></script>
   
   </body>
 </html>

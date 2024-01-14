@@ -23,15 +23,13 @@ public class UserDTO {
 		this.userPw = userPw;
 	}
 	
-	public UserDTO(String userId, String userPw, String userNick, String buildingName, String arduId,
-			String joinedAt) {
+	public UserDTO(String userId, String userPw, String userNick, String buildingName, String arduId) {
 		super();
 		this.userId = userId;
 		this.userPw = userPw;
 		this.userNick = userNick;
 		this.buildingName = buildingName;
 		this.arduId = arduId;
-		this.joinedAt = joinedAt;
 	}
 
 	public String getUserId() {

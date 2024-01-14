@@ -54,7 +54,7 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-header pb-2 px-3 ">
-              <div id="chart1" class="w-100" style="height: 300px;"></div>
+              <div id="chart1" class="w-100" style="height: 400px;"></div>
             </div><!-- End card-header -->
           </div><!-- <div class="card"> -->
         </div> <!-- End  -->
@@ -81,7 +81,7 @@
             <div class="card-header py-0 px-3 mt-2">
               <!-- <h6 class="mb-0">연동 디바이스</h6> -->
             </div>
-            <div class="card-body px-4 py-1">
+            <div class="card-body px-4 py-0 pb-2">
               <!-- start 디바이스 리스트 영역 -->
               <div class="row" id="linkedDvcList"> <!-- 아이콘, 이름, 운전값 / 운전토글, 값선택, 버튼 -->
               </div><!-- End <div class="row" id="linkedDvcList"> -->
@@ -101,7 +101,7 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-header pb-2 px-3 ">
-              <div id="chart3" class="w-100" style="height: 300px;"></div>
+              <div id="chart3" class="w-100" style="height: 400px;"></div>
             </div><!-- End card-header -->
           </div><!-- <div class="card"> -->
         </div> <!-- End  -->
@@ -158,7 +158,6 @@
   <!-- Solar Files  -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-  <script src="${contextPath}/resources/js/common_api.js"></script>
    <!-- solar chart func -->
   <script src="${contextPath}/resources/js/common_api.js"></script>
   <script src="${contextPath}/resources/js/common_bems.js"></script>
@@ -175,18 +174,18 @@
 			if(dbList == [] || dbList == '[]') {
 				dbList = [];
 			}
-			console.log('dbList');
-			console.log(dbList);
 			
 			// 페이지 로딩시 (db리스트,  연동된 디바이스 json list From Flask API)
 		  let result = getLinkedDeviceList(userId, arduId);
-			// getRealTimeDeviceConsume('chart1', result, dbList); // 조회기준 디바이스별 전력소비량 차트
-			makeLinkedDvcObj(dbList, result);
+		  const usedDbList = dbList.filter( dvc => dvc.dvcElecCode == 'u');
+			makeLinkedDvcObj(usedDbList, result); // 소비 디바이스 리스트
 			
+			getRealTimeDeviceConsume('chart1', result, dbList); // 조회기준 디바이스별 전력소비량 차트
+			getMonthlyTotalProdCons('chart3'); // 월별 총 전력 생산,소비 비교 차트
 		});
 	  
 	</script>  
-  <%-- <script src="${contextPath}/resources/js/solar_chart.js"></script> --%>
+  <script src="${contextPath}/resources/js/solar_chart.js"></script>
   <script src="${contextPath}/resources/js/bems_generate_mgmt.js"></script>
   <script src="${contextPath}/resources/js/bems_elec_dashboard.js"></script>
   

@@ -37,10 +37,10 @@ var sendDeviceControl = (userId, arduId, controlObj) =>  {
 } // sendDeviceControl
 
 
-// [연동된 디바이스 조회] json list From Flask API
+// 페이지 로딩시 연동된 디바이스 json list From Flask API
 var getLinkedDeviceList = (userId, arduId) => {
 
-	console.log('getLinkDeviceList ardu' + arduId);	
+	console.log('getLinkDeviceLis');	
   let reqData = {
 		"clientType": clientType,
 		"clientId": userId,

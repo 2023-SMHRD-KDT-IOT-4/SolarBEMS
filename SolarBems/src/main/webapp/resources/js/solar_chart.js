@@ -1,8 +1,4 @@
 
-$(document).ready(function() {
-  console.log('solar chart');
-  
-});
 
  // 조회기준 디바이스별 전력소비량 차트
   const getRealTimeDeviceConsume = (chartId, datas, dbDatas) => {
@@ -41,7 +37,7 @@ $(document).ready(function() {
     let option = {
       title: {
         text: '디바이스 별 전력 소비량',
-        // subtext: '(W)',
+        // subtext: '(mA)',
         left: 'center'
       },
       tooltip: {
@@ -81,7 +77,7 @@ $(document).ready(function() {
       /// 전력 소비량
       series: [
         {
-          name: '소비량(W)',
+          name: '소비량(mA)',
           type: 'bar',
           barWidth: '60%',
           data: dvcElecVals
@@ -93,3 +89,87 @@ $(document).ready(function() {
       myChart.setOption(option);
     }
   } // End getRealTimeDeviceConsume
+  
+  
+var months = ['23-07', '23-08', '23-09', '23-10', '23-11', '23-12'];
+  var monthProdList = [120, 130 , 90, 80 , 65, 60];
+  var monthConsList = [160, 180 , 140, 120 , 130, 150];
+  var monthConsMList = monthConsList.map(e => e * -1);
+
+  // 월별 총 전력 생산,소비 비교 차트
+  const getMonthlyTotalProdCons = chartId => {
+    let myChart = echarts.init(document.getElementById(chartId));
+    let option;
+    
+    option = {
+      title: {
+        text: '월별 총 전력 생산량 및 소비량',
+        subtext: '조회 24-01(kW)',
+        left: 'center'
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      legend: {
+        data: ['Profit', 'Expenses']
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: [
+        {
+          type: 'value'
+        }
+      ],
+      yAxis: [
+        {
+          type: 'category',
+          axisTick: {
+            show: false
+          },
+          data: months
+        }
+      ],
+      color : [
+        '#1be11b', '#ff0000'
+      ],
+      series: [
+        {
+          name: '생산량',
+          type: 'bar',
+          label: {
+            show: true,
+            position: 'inside'
+          },
+          emphasis: {
+            focus: 'series'
+          },
+          data: monthProdList
+        },
+        {
+          name: '소비량',
+          type: 'bar',
+          stack: 'Total',
+          label: {
+            show: true,
+            position: 'left'
+          },
+          emphasis: {
+            focus: 'series'
+          },
+          data: monthConsMList
+        }
+      ]
+    };
+
+    option && myChart.setOption(option);
+  }
+
+
+  

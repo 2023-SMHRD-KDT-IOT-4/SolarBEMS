@@ -1,0 +1,9 @@
+.md-36 {
+  font-size:  36px !important;
+}
+.md-off { 
+	color: rgba(0, 0, 0, 0.54);
+}
+.md-on {
+	color: rgb(44, 146, 201);
+}

@@ -172,7 +172,7 @@
                     <div class="input-group input-group-static w-60">
 	                     <label id="powerType" class="ms-0" ></label>
 	                     	<!-- 운전설정 수치 -->
-	                     	<input type="number" class="form-control" id="poewrValNum" name="pwerVal" value="">
+	                     	<input type="number" class="form-control" id="poewrValNum" name="pwerVal" value="" min="0" max="255">
 											  <select id="poewrValSelec" name="pwerVal" class="form-control" >
 											    <option value="50">강</option>
 											    <option value="130">중</option>

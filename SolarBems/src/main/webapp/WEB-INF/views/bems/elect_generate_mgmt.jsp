@@ -49,7 +49,7 @@
       			data-bs-delay="1500">
         <div class="toast-header">
         <i class="material-icons text-success me-2">check</i>
-          <strong class="me-auto" id="toast-header">디바이스 제어</strong>
+          <strong class="me-auto" id="toast-header">전력제어 전환</strong>
           <!-- <small>11 mins ago</small> -->
           <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close" aria-hidden="true"></i>
         </div>

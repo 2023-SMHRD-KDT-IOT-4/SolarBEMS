@@ -37,13 +37,11 @@ public class ArduinoAPIController {
 			return "{ response : 400 } ";
 		}
 		String arduId = dvcElecDTO.getArduId();
-		System.out.println(arduId);
 		for(DeviceElecValDTO dvc : dvcElecDTO.getDevice()) {
 			
 			String dvcElecCode = dvc.getDvcElecCode();
 			int dvcElecVal = dvc.getDvcElecVal();
 			int pinId = dvc.getPinId();
-			System.out.println(pinId);
 			int linkId = bemsMapper.getDeviceLinkId(arduId, pinId);
 			
 			if("g".equals(dvcElecCode)) { // 전력 생산
@@ -52,7 +50,6 @@ public class ArduinoAPIController {
 				String lastGenerated = bemsMapper.getLastGenerated(linkId);
 				System.out.println(lastGenerated);
 				if(isInsertElecVal(lastGenerated)) {
-					System.out.println(lastGenerated);
 					bemsMapper.insertGeneratedElec(new DeviceGeneratedElecDTO(linkId, dvcElecVal));
 				} 
 				
@@ -78,10 +75,9 @@ public class ArduinoAPIController {
 	    Timestamp curTimeStamp = new Timestamp(new Date().getTime());
 	    Calendar cal = Calendar.getInstance();
 	    cal.setTimeInMillis(curTimeStamp.getTime());
-	    // add 30 seconds
-	    cal.add(Calendar.SECOND, 30);
+	    // add 60 min
+	    cal.add(Calendar.MINUTE, 60);
 	    curTimeStamp = new Timestamp(cal.getTime().getTime());
-//	    System.out.println("cur + 30sec:: " +curTimeStamp);
 	    boolean result = lastDbTime.after(curTimeStamp);
 		
 		return result;

@@ -35,8 +35,8 @@ public class BemsController {
 	public String elecDashBoardPage(HttpSession session, Model model) {
 		
 		UserDTO user = (UserDTO) session.getAttribute("user");
-//		if(user == null)
-//			return "redirect:/user/login";
+		if(user == null)
+			return "redirect:/user/login";
 		List<LinkDeviceDTO> list = bemsMapper.getLinkedList(user.getUserId());
 		Gson gson = new Gson();
 		

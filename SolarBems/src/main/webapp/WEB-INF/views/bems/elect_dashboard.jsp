@@ -26,6 +26,7 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <!-- <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script> -->
+  <link rel="stylesheet" href="${contextPath}/resources/css/solar.css">
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
@@ -47,7 +48,7 @@
      	<input type="hidden" id="userId" value="${sessionScope.user.userId}">
      	<input type="hidden" id="arduId" value="${sessionScope.user.arduId}">
 
-      <!--  Start Chart -->
+      <!--  Start row 1,2 -->
       <div class="row">
       	<!-- 조회기준 디바이스별 전력소비량 차트 -->
         <div class="col-lg-6">
@@ -58,15 +59,38 @@
           </div><!-- <div class="card"> -->
         </div> <!-- End  -->
 
+
+				<!-- Toast -->    
+		    <div class="position-fixed start-50 bottom-50 z-index-2">
+		      <div class="toast" id="successToastCtr" role="alert" 
+		      			aria-live="assertive" aria-atomic="true" 
+		      			data-bs-delay="1500">
+		        <div class="toast-header">
+		        <i class="material-icons text-success me-2">check</i>
+		          <strong class="me-auto" id="toast-header">디바이스 제어</strong>
+		          <!-- <small>11 mins ago</small> -->
+		          <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close" aria-hidden="true"></i>
+		        </div>
+		        <div class="toast-body">제어 성공</div>
+		      </div><!-- End Toast  -->
+		    </div><!--End position Toast -->
+		    
+        <!-- 연동 디바이스 시작영역 -->
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-header pb-2 px-3 ">
-              <div id="chart2" class="w-100" style="height: 300px;"></div>
-            </div><!-- End card-header -->
-          </div><!-- <div class="card"> -->
-        </div> <!-- End  -->
+            <div class="card-header py-0 px-3 mt-2">
+              <!-- <h6 class="mb-0">연동 디바이스</h6> -->
+            </div>
+            <div class="card-body px-4 py-1">
+              <!-- start 디바이스 리스트 영역 -->
+              <div class="row" id="linkedDvcList"> <!-- 아이콘, 이름, 운전값 / 운전토글, 값선택, 버튼 -->
+              </div><!-- End <div class="row" id="linkedDvcList"> -->
+
+            </div>
+          </div>
+        </div><!-- End 연동 디바이스 시작영역 -->
        
-      </div><!-- End row  -->
+      </div><!-- End row 1,2 -->
 
     </div> <!-- End container-fluid py-2 -->
 
@@ -85,13 +109,14 @@
 				<!-- 전력 생산량 관리 -->
         <div class="col-lg-6">
 			 		<!-- Toast -->    
-			    <div class="position-fixed bottom-1 end-1 z-index-2">
+			    <div class="position-fixed bottom-0 end-0 z-index-2">
 			      <div class="toast" id="successToast" role="alert" 
 			      			aria-live="assertive" aria-atomic="true" 
-			      			data-bs-delay="3000">
+			      			data-bs-delay="1500">
+			      			<!-- data-bs-delay="1500"> -->
 			        <div class="toast-header">
 			        <i class="material-icons text-success me-2">check</i>
-			          <strong class="me-auto" id="toast-header">디바이스 제어</strong>
+			          <strong class="me-auto" id="toast-header">전력제어 전환</strong>
 			          <!-- <small>11 mins ago</small> -->
 			          <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close" aria-hidden="true"></i>
 			        </div>
@@ -153,16 +178,17 @@
 			console.log('dbList');
 			console.log(dbList);
 			
-		  // 페이지 로딩시 연동된 디바이스 json list From Flask API
+			// 페이지 로딩시 (db리스트,  연동된 디바이스 json list From Flask API)
 		  let result = getLinkedDeviceList(userId, arduId);
-			getRealTimeDeviceConsume('chart1', result, dbList); // 조회기준 디바이스별 전력소비량 차트
-			
+			// getRealTimeDeviceConsume('chart1', result, dbList); // 조회기준 디바이스별 전력소비량 차트
+			makeLinkedDvcObj(dbList, result);
 			
 		});
 	  
 	</script>  
-  <script src="${contextPath}/resources/js/solar_chart.js"></script>
+  <%-- <script src="${contextPath}/resources/js/solar_chart.js"></script> --%>
   <script src="${contextPath}/resources/js/bems_generate_mgmt.js"></script>
+  <script src="${contextPath}/resources/js/bems_elec_dashboard.js"></script>
   
   
   </body>

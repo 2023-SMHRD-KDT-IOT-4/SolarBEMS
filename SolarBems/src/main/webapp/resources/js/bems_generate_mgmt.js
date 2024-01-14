@@ -1,7 +1,6 @@
 // 전력제어 관리
 
 $(document).ready(function() {
-	console.log('bems_generate_mgmt');
 	
 	const toastTrigger = document.getElementById('converBtn'); // 전환하기 버튼
 	const toastLive = document.getElementById('successToast');
@@ -9,7 +8,6 @@ $(document).ready(function() {
 	if (toastTrigger) {
   	const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLive)
   	toastTrigger.addEventListener('click', () => {
-  	console.log('ttt');
 	  	setTimeout(function () {
 			  toastBootstrap.show();
 			}, 1500);
@@ -21,14 +19,12 @@ $(document).ready(function() {
   $('#converModal').on('show.bs.modal', e => {
     
     const dataset = e.relatedTarget.dataset;
-    console.log(dataset);
 	  let elecMsg = '';
 	  if( $('#elecStatusCheckbox').is(":checked") )  {
 	  	elecMsg = '정말 일반전기 제어방식으로 전환 하시겠습니까?';
   	} else {
 	  	elecMsg = '정말 배터리전기 제어방식으로 전환 하시겠습니까?';
   	}
-		console.log(elecMsg);
 		$('#convertElecModalBody').html(elecMsg);
     
     
@@ -53,7 +49,6 @@ const getElecGenerate = () => {
 
 	const userId = $('#userId').val();
 	const arduId = $('#arduId').val();
-	console.log('getLinkDeviceList ardu' + arduId);
 
 	let result = getLinkedDeviceList(userId, arduId);
   // 에러 또는 연동된 디바이스가 한개도 없을 경우
@@ -73,7 +68,6 @@ const getElecGenerate = () => {
 	// 필터 태양광패널만('dvc001')
 	const solarList = devices.filter( dvc => dvc.dvcId == 'dvc001');
 	const solarObj = Object.assign({}, solarList)[0];
-	console.log(solarObj);
 	if(solarObj === undefined) {
 		alert('연동정보가 없습니다');
 		emptySolarObj();
@@ -127,7 +121,6 @@ const getElecGenerate = () => {
 		
 		// result에 control_id: "control4"
 		let result = sendDeviceControl(userId, arduId, controlObj);
-    console.log(result);	
     			
 		if(!result || Object.keys(result).length == 0 ) {
 			alert('디바이스 제어 실패');

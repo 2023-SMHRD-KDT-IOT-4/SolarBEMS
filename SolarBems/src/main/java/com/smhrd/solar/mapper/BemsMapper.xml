@@ -15,7 +15,7 @@
 			FROM device_linked d1 
 			    INNER JOIN device_info d2 ON d1.dvc_id = d2.dvc_id
 			WHERE user_id = #{userId}
-			ORDER BY dvc_id
+			ORDER BY dvc_id, pin_id
 		</select>
 	
 		<select id="getLinkedDevice" resultType="linkDevice">

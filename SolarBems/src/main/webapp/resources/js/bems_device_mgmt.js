@@ -65,16 +65,14 @@ $(document).ready(function() {
   $('#controlExecuteBtn').on("click", () => {
   	// 제어전송 버튼 spinner 처리
   	applySpinnerBtn('controlExecuteBtn', '제어전송', true);
-    
 		const userId = $('#userId').val();
 		const arduId = $('#arduId').val();
 		const pinId = $('#sendPinId').val(); 
 		const dvcId = $('#clickDvcId').val(); 
-		
 		const powerStatus = $('#powerStatus').is(':checked') ? 1 : 0;
 		let powerVal = $('#poewrValNum').val();
-		
-		if(dvcId === 'dvc003') { // aircon
+
+		if(dvcId === 'dvc003') { // motor
 			powerVal = $("#poewrValSelec option:selected").val();
 			powerVal = isNaN(powerVal) ? 0 : powerVal;
 		}
@@ -85,11 +83,24 @@ $(document).ready(function() {
       "powerVal": powerVal
 	  }
 	  console.log(controlObj);
-     let result = sendDeviceControl(userId, arduId, controlObj);
-     console.log(result);
-		 if(!result) {
-			alert('디바이스 제어 실패');
-		 } 
+    let result = sendDeviceControl(userId, arduId, controlObj);
+
+    // 테이블 리스트 내 운전상태, 운전값 변경
+    let tdPowerStatus = viewPowerStatus(pinId, powerStatus);
+    $('#powerStatusSpan'+pinId).html(tdPowerStatus);
+
+
+    
+    let tdPowerVal = powerVal;
+    if(dvcId === 'dvc003') { // motor
+			tdPowerVal = getMotorPowerValName(powerVal);
+		}
+    $('#powerValSpan'+pinId).html(tdPowerVal);
+    $('#realValSpan'+pinId).val(tdPowerVal);
+
+    if(!result) {
+    alert('디바이스 제어 실패');
+    } 
 		 
 
   }); // $('#controlExecuteBtn')
@@ -110,7 +121,7 @@ $(document).ready(function() {
 		let findId = children[0].id.replace(regex, "");
 		
 		let powerStatusVal = $('#powerStatusSpan'+findId).text();
-		let powerVal = $('#powerValSpan'+findId).text();
+		let powerVal = $('#realValSpan'+findId).val();
 		$('#clickPowerStatus').val(powerStatusVal);
 		$('#clickPowerVal').val(powerVal);
 		$('#clickDvcId').val(dvcId);
@@ -126,14 +137,12 @@ $(document).ready(function() {
 
 // 관리화면 > 테이블 row의 디바이스 제어 아이콘 클릭
 const controlDevice = (pinId, dvclName, dvcPowerName, dvcId, contextPath) => {
-	console.log(dvcId);
 	
 	if(dvcId == 'dvc001') { // 태양광 패널 => 전력 생산량 페이지 이동
 		location.href = contextPath + '/bems/elect_generate_mgmt';
 	}
 	$('#poewrValNum').hide();
 	$('#poewrValSelec').hide();
-	
 	$('#controlDiv').show(); // 디바이스 제어 div출력
 	
 	// 클릭한 디바이스 별 출력 세팅
@@ -152,15 +161,17 @@ const controlDevice = (pinId, dvclName, dvcPowerName, dvcId, contextPath) => {
 	if(dvcId == 'dvc002') { // led
 		$('#poewrValNum').show();
 		$('#poewrValNum').val(powerVal); 
-	} else if(dvcId == 'dvc003') { // motor
+	} 
+  else if(dvcId == 'dvc003') { // motor
 		$('#poewrValSelec').show();
-		
-		if(powerVal >=0 && powerVal < 125) { // 강
+
+
+		if(powerVal >=0 && powerVal < 130) { // 강
 				$("#poewrValSelec").val("50").prop("selected", true);
-		} else if(powerVal >=125 && powerVal < 200) { // 중
-				$("#poewrValSelec").val("125").prop("selected", true);
-		} else if(powerVal > 200) { // 약
-				$("#poewrValSelec").val("200").prop("selected", true);
+		} else if(powerVal >=130 && powerVal < 180) { // 중
+				$("#poewrValSelec").val("130").prop("selected", true);
+		} else if(powerVal >= 180) { // 약
+				$("#poewrValSelec").val("180").prop("selected", true);
 		}
 		
 	}
@@ -171,15 +182,15 @@ const controlDevice = (pinId, dvclName, dvcPowerName, dvcId, contextPath) => {
 
 // 테이블 내 연동된 디바이스 운전상태, 운전상태값
 const makeTableBody = (dbList, datas) => {
-  console.log(dbList);
-  console.log(datas);
   
   $('#linkedDviceBody').html('');
   let tableTag = '';
 
   // db데이터
   $.each(dbList, (key,value) => {
-    tableTag += '<tr class="bg-gray" id="deviceTr'+(key+1) +'">';
+    let pinId = value.pinId;
+
+    tableTag += '<tr class="bg-gray" id="deviceTr'+pinId +'">';
     
     tableTag += '<td class="align-middle text-center">';
     tableTag += '<span class="text-dark text-md font-weight-normal">'+(key+1) +'</span>';
@@ -192,10 +203,11 @@ const makeTableBody = (dbList, datas) => {
     tableTag += '</td>';
     // 운전상태
     tableTag += '<td class="align-middle text-center">';
-    tableTag += '<span id="powerStatusSpan'+(key+1)+'"'+ ' class="badge"></span>';
+    tableTag += '<span id="powerStatusSpan'+pinId+'"'+ ' class="badge"></span>';
     tableTag += '</td>';
     tableTag += '<td class="align-middle text-center">';
-    tableTag += '<span id="powerValSpan'+(key+1)+'"'+ ' class="text-dark text-md font-weight-normal"></span>';
+    tableTag += '<input type="hidden" id="realValSpan'+pinId +'" value="'+value.pinId +'" >';
+    tableTag += '<span id="powerValSpan'+pinId+'"'+ ' class="text-dark text-md font-weight-normal"></span>';
     tableTag += '</td>';
     tableTag += '<td class="align-middle text-center">';
     tableTag += '<span class="text-dark text-md font-weight-normal">'+value.dvclLoc +'</span>';
@@ -203,16 +215,16 @@ const makeTableBody = (dbList, datas) => {
     // 제어
     tableTag += '<td class="align-middle text-center">';
   	tableTag += '<a class="btn btn-link text-info text-gradient px-1 mb-0 controlDevice">';
-   	tableTag += '<input type="hidden" id="pinId'+(key+1) +'" value="'+value.pinId +'" >';
-    tableTag += '<input type="hidden" id="dvclName'+(key+1) +'" value="'+value.dvclName +'" >';
-    tableTag += '<input type="hidden" id="dvcPowerName'+(key+1) +'" value="'+value.dvcPowerName +'" >';
-    tableTag += '<input type="hidden" id="dvcId'+(key+1) +'" value="'+value.dvcId +'" >';
+   	tableTag += '<input type="hidden" id="pinId'+pinId +'" value="'+value.pinId +'" >';
+    tableTag += '<input type="hidden" id="dvclName'+pinId +'" value="'+value.dvclName +'" >';
+    tableTag += '<input type="hidden" id="dvcPowerName'+pinId +'" value="'+value.dvcPowerName +'" >';
+    tableTag += '<input type="hidden" id="dvcId'+pinId +'" value="'+value.dvcId +'" >';
     tableTag += '<i class="material-icons">settings_remote</i>디바이스 제어</a>';
     
     tableTag += '<a class="btn btn-link text-danger text-gradient px-1 mb-0 modalBtn"';
     tableTag += ' data-bs-toggle="modal" data-bs-target="#linkOffModal"';
     tableTag += ' data-bs-id="' + value.linkId + '" data-bs-param="'+value.dvclName+'"';
-    tableTag += ' data-bs-no="'+ (key+1) + '"> <i class="material-icons">link_off</i>';
+    tableTag += ' data-bs-no="'+ pinId + '"> <i class="material-icons">link_off</i>';
     tableTag += ' 연동해제</a>';
     
     tableTag += '<a class="btn btn-link text-dark px-1 mb-0" href="../bems/device_update/' + value.linkId +'">';
@@ -227,34 +239,46 @@ const makeTableBody = (dbList, datas) => {
   const devices = datas['device'];
 
   $.each(devices, (key,value) => {	
-  
-  	let powerStatus = '';
-  	if(value['powerStatus'] == 1) {
-  		powerStatus = 'ON';
-  		$('#powerStatusSpan'+(key+1)).addClass('bg-gradient-success');
-  	} else {
-  		powerStatus = 'OFF';
-  		$('#powerStatusSpan'+(key+1)).addClass('bg-gradient-secondary');
-  	}
+    const apiPinId = value.pinId;
+
+  	let powerStatus = viewPowerStatus(apiPinId, value['powerStatus']);
     let powerVal = value['powerVal'];
-    let motorPowerVal = "";
+    let motorPowerVal = getMotorPowerValName(powerVal);
     
-		if(powerVal >=0 && powerVal < 125) { // 강
-			motorPowerVal = "강";
-		} else if(powerVal >=125 && powerVal < 200) { // 중
-			motorPowerVal = "중";
-		} else if(powerVal > 200) { // 약
-			motorPowerVal = "약";
-		}
-    
-    $('#powerStatusSpan'+(key+1)).html(powerStatus);
-    $('#powerValSpan'+(key+1)).html(powerVal);
+    $('#powerStatusSpan'+apiPinId).html(powerStatus);
+    $('#powerValSpan'+apiPinId).html(powerVal);
+    $('#realValSpan'+apiPinId).val(powerVal);
     if(value['dvcId'] === 'dvc003') {
-    	$('#powerValSpan'+(key+1)).html(motorPowerVal);
+    	$('#powerValSpan'+apiPinId).html(motorPowerVal);
     }
   });
 
 }// makeTableData
 
+const viewPowerStatus = (pinId, powerStatus) => {
+  let statusName = 'OFF';
+  const $statusSpan = $('#powerStatusSpan'+pinId);
+  if(powerStatus == 1) {
+    statusName = 'ON';
+    $statusSpan.removeClass('bg-gradient-secondary').addClass('bg-gradient-success');
+  } else {
+    statusName = 'OFF';
+    $statusSpan.removeClass('bg-gradient-success').addClass('bg-gradient-secondary');
+  }
+  return statusName;
+}
+
+
+const getMotorPowerValName = powerVal =>  {
+  let motorPowerValName = "";
+  if(powerVal >=0 && powerVal < 130) { // 강 50
+    motorPowerValName = "강";
+  } else if(powerVal >=130 && powerVal < 180) { // 중130
+    motorPowerValName = "중";
+  } else if(powerVal >= 180) { // 약:180
+    motorPowerValName = "약";
+  }
+  return motorPowerValName;
+}
 
   

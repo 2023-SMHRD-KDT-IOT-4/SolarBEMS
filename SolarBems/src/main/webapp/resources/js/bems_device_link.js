@@ -16,12 +16,14 @@ $(document).ready(function() {
   
   // 재연동버튼 클릭
   $("#retryLinkBtn").on("click", () => {
-    getLinkedDeviceList();
+    let result = getLinkedDeviceList(userId, arduId);
+ 		processLinkedAPI(result); // 응답받은 연동 디바이스 리스트 처리
   });
 
   // 체크박스(전체선택) 클릭
   $("#chkLinkAll").on("click", () => {
     let chkList = $("input[name=chkLink]");
+    console.log(chkList);
     if($(this).is(":checked")){
       chkList.prop("checked", true);
     }else

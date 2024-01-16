@@ -55,7 +55,7 @@ https://youtu.be/-Ie-fJOy5Gk
   ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/faf05eea-4b73-49a7-a677-f7e526cd7d43)
 <br><br>
 ## 4. 사용언어 및 도구
-![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/91ca8d97-3ed7-4ff8-b911-71a6ac4821dc)
+![사용 언어 및 도구](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/53fcd84f-17e4-4e2a-82ad-61e644c51bb1)
 
 ## 5. 시스템 아키텍쳐
 ![image](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/77395af4-15ff-44d9-a0ee-700d1e7e8405)
@@ -65,7 +65,7 @@ https://youtu.be/-Ie-fJOy5Gk
 ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/fc7b356c-e7df-42d8-b924-81c3ce97cbac)
 
 ## 7. 역할분담
-![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/c80dde4c-c88b-48bc-8b04-44a133bc2827)
+![역할 분담](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/c9829fa0-d5ed-4574-b54a-95856ad30c64)
 ### 신지영
   * 프로젝트 팀장, **프로젝트 총괄 및 결과 발표**
   * 데이터베이스 설계

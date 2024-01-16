@@ -123,25 +123,16 @@ https://youtu.be/-Ie-fJOy5Gk
   * 시연영상 제작
 
 ## 8. 트러블슈팅
-### 8-1) AWS 배포 관련 트러블슈팅
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/bcf67b6c-a2c9-45e4-a162-7ced8fb41c0f)
-### 8-2) 카카오 로그아웃 에러 발생 관련 
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/34fbd950-909c-4b31-8a8d-9673d3e0e01a)
-
-### 8-3) 투두리스트 완료, 미완료 정상적으로 카운트가 되지 않는 문제 발생 관련
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/15206ec8-d3cc-4f97-9249-4ff22c940934)
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/07677cea-92d7-4d96-ae8a-3383318a75f0)
-
-### 8-4) props를 활용한 데이터 전달 외 부모-자식 콤포넌트가 아닌 외부 콤포넌트에서 데이터를 전달해야 하는 경우 관련
-![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/d89d8d5c-bd59-4b2c-a797-3671626d259a)
-![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/32bf466c-0409-44e9-86c5-33368d39d340)
-
-### 8-5) 카카오 톡캘린더 일정 추가 요청 에러 관련
-  * 카카오 톡캘린더 www-form-urlencoded 타입으로 요청 받음 > qs 라이브러리 활용하여 event 객체를 해당 타입으로 변환하였으나 지속적으로 에러 발생
-  * 중첩된 객체는 라이브러리를 통해 json 문자열로 변환하고, 다시 qs 라이브러리를 활용해 event 객체를 www-form-urlencoded 타입으로 변환하여 요청함으로써 문제 해결
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/6c2b75b8-6b6a-43a6-b7c1-9c71c615eaf1)
-![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/6927602f-1ae6-476d-b8b3-ddf2d7232c17)
-
-
-  
-# TodoWedding
+### 8-1) 아두이노-웹간 통신 오류
+  ![image](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/116381280/51f25a6e-fe7d-4bf5-9f43-925380132036)
+  * ESP8266 모듈을 통해 웹-아두이노 간 통신 구현 시도
+  * 라이브러리, 버전 문제로 인해 지속적 오류 발생
+  * 코드 작성 후 지속적으로 TIME OUT 오류 발생
+  * ESP32 모듈 교체 후 올바르게 작동함
+    
+### 8-2) 아두이노 회로 문제 
+  ![image](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/116381280/0cda99cd-2350-4ffc-a1d0-a065e973a56b)
+  * 아두이노 배터리와 전원을 브레드보드에 연결 실패하는 문제 발생
+  * 전압, 전력 문제로 인한 것으로 파악
+  * 배터리와 외부전원 직접공급으로 전환하여 문제 해결
+<hr/>

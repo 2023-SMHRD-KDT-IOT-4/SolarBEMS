@@ -22,17 +22,10 @@ public class ArduinoAPIController {
 	@Autowired
 	BemsMapper bemsMapper;
 	
-	@RequestMapping(value = "/linkSolar", method = RequestMethod.GET)
-	public void linkSolar() {
-		System.out.println("linkSolar");
-	}
-	
-	
 	// 디바이스 전력 생산량/소비량 구분해서 db에 저장
 	@RequestMapping(value = "/api/elec/measure", method = RequestMethod.POST)
 	public String elecMeasure(@RequestBody DeviceElecDTO dvcElecDTO) {
 		
-		System.out.println(dvcElecDTO);
 		if(!"ardu".equals(dvcElecDTO.getClientType())) {
 			return "{ response : 400 } ";
 		}
@@ -45,10 +38,7 @@ public class ArduinoAPIController {
 			int linkId = bemsMapper.getDeviceLinkId(arduId, pinId);
 			
 			if("g".equals(dvcElecCode)) { // 전력 생산
-				System.out.println(linkId);
-			
 				String lastGenerated = bemsMapper.getLastGenerated(linkId);
-				System.out.println(lastGenerated);
 				if(isInsertElecVal(lastGenerated)) {
 					bemsMapper.insertGeneratedElec(new DeviceGeneratedElecDTO(linkId, dvcElecVal));
 				} 
@@ -68,18 +58,19 @@ public class ArduinoAPIController {
 	
 	// 해당 디바이스 마지막 측정 시간을 기준으로 측정량 insert할지
 	public boolean isInsertElecVal(String lastTime) {
+		
 		if(lastTime == null || lastTime == "")
 			return true;
-		 Timestamp lastDbTime = Timestamp.valueOf(lastTime);
-		  
+		
+		Timestamp lastDbTime = Timestamp.valueOf(lastTime);
+		
 	    Timestamp curTimeStamp = new Timestamp(new Date().getTime());
 	    Calendar cal = Calendar.getInstance();
 	    cal.setTimeInMillis(curTimeStamp.getTime());
-	    // add 60 min
-	    cal.add(Calendar.MINUTE, 60);
+	    cal.add(Calendar.MINUTE, 60);  // add 60 min
 	    curTimeStamp = new Timestamp(cal.getTime().getTime());
+	    
 	    boolean result = lastDbTime.after(curTimeStamp);
-		
 		return result;
 	}
 }

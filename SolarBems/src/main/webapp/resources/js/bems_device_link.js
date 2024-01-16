@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  console.log('device link');
   
   const userId = $('#userId').val();
 	const arduId = $('#arduId').val();
@@ -23,7 +22,6 @@ $(document).ready(function() {
   // 체크박스(전체선택) 클릭
   $("#chkLinkAll").on("click", () => {
     let chkList = $("input[name=chkLink]");
-    console.log(chkList);
     if($(this).is(":checked")){
       chkList.prop("checked", true);
     }else
@@ -58,7 +56,6 @@ $(document).ready(function() {
     }
   });
 
-  console.log({ 'devices' : formData});
 
   $.ajax({
     type : 'POST',

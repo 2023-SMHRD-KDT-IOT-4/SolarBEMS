@@ -4,8 +4,6 @@ var clientType = 'web';
 
 // [디바이스 제어] json Data ==> To Flask API 
 var sendDeviceControl = (userId, arduId, controlObj) =>  {
-	console.log('sendDeviceControl');
-	console.log(controlObj);
 		let sendData = {
 	    "clientType": "web",
 	    "clientId": userId,
@@ -13,7 +11,6 @@ var sendDeviceControl = (userId, arduId, controlObj) =>  {
 	    "result" : -1,
 			"control": controlObj
 		}
-	console.log(JSON.stringify(sendData));
 
 	let result = false;
 	$.ajax({
@@ -40,13 +37,11 @@ var sendDeviceControl = (userId, arduId, controlObj) =>  {
 // 페이지 로딩시 연동된 디바이스 json list From Flask API
 var getLinkedDeviceList = (userId, arduId) => {
 
-	console.log('getLinkDeviceLis');	
   let reqData = {
 		"clientType": clientType,
 		"clientId": userId,
  		"arduId" : arduId,
 	}
-  console.log(reqData);
   let result = false;
   
   $.ajax({
@@ -57,7 +52,6 @@ var getLinkedDeviceList = (userId, arduId) => {
     dataType : 'json',
     contentType : 'application/json; charset:UTF-8',
     success : data => {
-    	console.log(data);
 			result = data;
     },
     error : () => {

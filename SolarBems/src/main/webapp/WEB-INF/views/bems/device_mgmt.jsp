@@ -89,7 +89,7 @@
               <div class="row">
                 <!--  -->
                 <div class="col-md-7">
-                  <h5 class="pt-2" id="linkedCnt">연동 된 디바이스</h5>
+                  <h5 class="pt-2" id="linkedCnt"></h5>
                 </div>
                 <!--  -->
                 <div class="col-md-5 d-flex justify-content-start justify-content-md-end align-items-center">
@@ -107,9 +107,7 @@
                 	<input type="hidden" id="arduId" value="${sessionScope.user.arduId}">
                 	<input type="hidden" id="linkOffLinkId" value="">
                 	<input type="hidden" id="linkOffNo" value="">
-                	<c:if test="${fn:length(linkedList) lt 3}">
-           					<h4 class="text-dark"> 연동 된 디바이스 없습니다.</h4>
-                	</c:if>
+           					<h4 class="text-dark" id="diviceListDiv"></h4>
                 	<c:if test="${fn:length(linkedList) gt 3 }">
 	                  <table class="table table-hover align-items-center mb-0 text-danger">
 	                    <thead >
@@ -230,15 +228,16 @@
 			
 			const userId = $('#userId').val();
 			const arduId = $('#arduId').val();
-			let dbList = '<c:out value="${linkedList}" escapeXml="false"/>';
+			
+			let dbList = '<c:out value="${linkedList}" escapeXml="false" />';
 			dbList = dbList.replaceAll('&#34;', '\"');
 			dbList = JSON.parse(dbList);
-			if(dbList == [] || dbList == '[]') {
-				dbList = [];
+			if(dbList == [] || dbList.length == 0) {
+				$('#diviceListDiv').html('연동 된 디바이스 없습니다.'); // 연동된 디바이스 테이블
 			}
 			
-			$('#linkedCnt').append('('+ dbList.length +')'); // 연동된 디바이스 갯수
-			// 페이지 로딩시 (db리스트,  연동된 디바이스 json list From Flask API)
+			$('#linkedCnt').html('연동 된 디바이스('+ dbList.length +')'); // 연동된 디바이스 갯수
+			// 페이지 로딩시 연동된 디바이스 json list From Flask API)
 		  let result = getLinkedDeviceList(userId, arduId);
 			makeTableBody(dbList, result);
 		

@@ -3,12 +3,9 @@
  // 조회기준 디바이스별 전력소비량 차트
   const getRealTimeDeviceConsume = (chartId, datas, dbDatas) => {
 
-    if(dbDatas == [] || dbDatas.length == 0 ) {
-      console.log('no db data');
-    }
-  //  Flask 받은 데이터 빈값 체크
+ 	 	//  Flask 받은 데이터 빈값 체크
     if(Object.keys(datas).length == 0 || datas === undefined) {
-      console.log('no api linked data');
+     	datas = {};
     }
     let apiDatas = datas['device'];
 

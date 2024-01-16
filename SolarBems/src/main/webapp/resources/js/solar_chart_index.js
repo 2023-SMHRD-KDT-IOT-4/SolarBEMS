@@ -1,9 +1,6 @@
 
 $(document).ready(function() {
-  console.log('dash');
   getDayDeviceConsume('chart1'); // 조회일 디바이스별 전력소비량 차트
-  // getMonthlyTotalConsume('chart2'); // 월별 총 전력소비량 차트
-  // getMonthlyTotalProd('chart3');  // 월별 총 전력생산량 차트
   getMonthlyTotalProdCons('chart4'); // 월별 총 전력 생산,소비 비교 차트
 
 

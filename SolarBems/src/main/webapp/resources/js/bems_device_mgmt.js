@@ -82,7 +82,6 @@ $(document).ready(function() {
       "powerStatus": powerStatus,
       "powerVal": powerVal
 	  }
-	  console.log(controlObj);
     let result = sendDeviceControl(userId, arduId, controlObj);
 
     // 테이블 리스트 내 운전상태, 운전값 변경

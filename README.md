@@ -17,40 +17,8 @@ https://youtu.be/-Ie-fJOy5Gk
 * 디바이스의 전력 소비량 및 전력 생산량 표시 기능
 * 월별 전력 소비량 및 전력 생산량 표시 기능
   
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/7a4e9121-3fa6-4aee-8c6e-0f3cfebe9d29)
-  <br><br>
 
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/52a2294d-1286-414b-98a9-8c3230f95b93)
-<br><br>
 
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/9149cdbe-7d9a-4f12-a3b1-cdc9e8eae4fe)
-<br><br>
-  
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/9054aee7-cd30-41c6-a72a-3a9e0a85be8e)
-<br><br>
-  
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/c197ef40-151a-46da-b471-856fde07e5cc)
-<br><br>
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/6e32535e-8327-4e61-a7cb-cfec964d0140)
-<br><br>
-  
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/06ab5273-e7f6-4789-8494-5711ce179dc3)
- <br><br> 
-  
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/56d27f72-956e-42fa-b7ce-91cf6826e7a4)
-<br><br>
-  
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/ad48f492-7462-423c-ab7c-e5274dde03f3)
-<br><br>
-  
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/95542729-1dd7-41eb-977e-1fda01e0bd8a)
-  <br><br>
-  
-   ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/00811852-43f6-4b4e-8d43-66b155ba6809)
-  <br><br>
-  
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/5335dbfa-f16a-4d46-80e8-b4b8678a3472)
-<br><br>
   
   ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/faf05eea-4b73-49a7-a677-f7e526cd7d43)
 <br><br>
@@ -69,57 +37,22 @@ https://youtu.be/-Ie-fJOy5Gk
 ### 신지영
   * 프로젝트 팀장, **프로젝트 총괄 및 결과 발표**
   * 데이터베이스 설계
-  * **AWS 배포**
-  * **GitHub 협업 관리**
-  * 카카오 메시지 API 및 Spring Boot Scheduling Tasks 활용 **오늘 일정/하루 남은 일정에 대한 알림 메시지 전송** 기능
-    & D-day 조회하여 특정 D-day가 됐을 때 해당 D-day에 대한 체크리스트를 전송하는 **자동 체크리스트 전송** 기능 구현
-  * **웨딩 체크리스트 백엔드** 기능 구현
-  * **웨딩 캘린더 백엔드** 기능 구현
-  * **웨딩 투두리스트 백엔드** 기능 구현
-  * **1:1 상담(채팅) 기능 WebSocket(STOMP)를 활용**하여 **프론트엔드(React) 및 백엔드(SpringBoot)** 기능 구현
-    (채팅방 생성, 채팅방 구독, 입장메시지, 퇴장메시지, 메시지 전송)
-  * **업체 전용 페이지** 업체 정보 수정, 채팅방 리스트 **프론트엔드 & 백엔드** 구현
+ 
   * **관리자 페이지** 대시보드, 업체 리스트, 회원 리스트 조회, 검색 수정 **프론트엔드 & 백엔드** 구현
 ### 서유광
   * **데이터베이스**
   * 데이터베이스 **설계 및 관리**
-  * **E-R Diagram, ERD** 작성
-  * **백엔드**
-  * **OAuth를 활용한 카카오 REST API 소셜 로그인, 로그아웃, 회원탈퇴 기능** 구현
-  * **사용자 토큰 관리**
-  * **예산관리 백엔드** 기능 구현 (조회, 입력, 수정, 삭제)
-  * **업체정보 백엔드** 기능 구현 (조회, 입력, 수정, 삭제)
-  * **프론트엔드**
-  * **카카오 맵 REST API를 활용해 지도 생성 및 업체찾기 페이지** 구현
   * *CustomOverlay를 활용해 정보표시창 구현*
   * *데이터베이스에 있는 업체 구분코드별 지도에 표시*
   * **최종 디버깅 진행**
 ### 서현록
   * **기획 발표**
   * **UI/UX 설계**
-  * Figma 화면설계 디자인
-  * **프론트엔드**
-  * 리액트 컴포넌트 분리 및 라우터연결 기능 구현
-  * **메인 페이지** 및 **광고 페이지** 기능 및 화면 구현
-  * **Modal 컴포넌트** 기능 및 화면 구현
-  * **일정관리 페이지**  FullCalendar 라이브러리 활용 - 일정 조회/추가/수정/삭제 기능 FE 기능 및 화면 구현
-  * 결혼준비 진행도 / 예산 현황 FE 기능 및 화면 구현
-  * **체크리스트 페이지** 체크리스트 조회 및 투두리스트 추가 FE 기능 및 화면 구현
-  * **마이페이지** 화면 구현
-  * 전반적인 웹 서비스 **화면 디자인** 및 **반응형 웹 적용**
   * 기획 및 최종 발표 PPT 제작
 ### 양수진
    * **서비스 기획**
   * 기업멘토링 **Notion 일정 관리**
-  * **프론트엔드**
-  * 로그인, 로그아웃, 회원탈퇴페이지
-  * **투두리스트 페이지** To-do 등록,조회,삭제
-  * **투두리스트 등록한 **To-do 내역 캘린더 연동,조회,수정,삭제**
-  * **예산관리 페이지** 컴포넌트 및 React_Recharts 라이브러리 활용 총수입/총지출 통계, 지출분담 통계 그래프
-  * 예산관리 수입 내역/지출 내역 등록
-  * 예산관리 수입/지출 내역 리스트 조회 및 삭제
-  * 리덕스 활용 회원정보 상태관리
-  * **Figma 화면설계 디자인**
+  
   * 시연영상 제작
 
 ## 8. 트러블슈팅

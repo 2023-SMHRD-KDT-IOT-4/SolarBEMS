@@ -41,7 +41,6 @@ public class BemsController {
 		Gson gson = new Gson();
 		
         String jsonArrayString = gson.toJson(list);
-        System.out.println("JSON Array : " + jsonArrayString);			
 		model.addAttribute("linkedList", jsonArrayString);
 		
 		return "bems/elect_dashboard";
@@ -71,7 +70,6 @@ public class BemsController {
 		Gson gson = new Gson();
 		
         String jsonArrayString = gson.toJson(list);
-        System.out.println("JSON Array : " + jsonArrayString);			
 		model.addAttribute("linkedList", jsonArrayString);
 		
 		return "bems/device_mgmt";
@@ -88,8 +86,6 @@ public class BemsController {
 	@RequestMapping(value = "/device_link", method = RequestMethod.POST)
 	public @ResponseBody String linkDevice(@RequestBody String jsonData,
 							HttpSession session) {
-		System.out.println(jsonData);
-		
 		final ObjectMapper objectMapper = new ObjectMapper();
 		UserDTO user = (UserDTO) session.getAttribute("user");
 		
@@ -97,7 +93,6 @@ public class BemsController {
 			
 			List<LinkDeviceDTO> list 
 				= objectMapper.readValue(jsonData, new TypeReference<List<LinkDeviceDTO>>(){});
-			
 	        IntStream.range(0, list.size()).forEach(idx -> {
 	        	LinkDeviceDTO dto = list.get(idx);
 				dto.setUserId(user.getUserId());
@@ -121,7 +116,6 @@ public class BemsController {
 	public String deviceUpdatePage(@PathVariable("linkId") String linkId, Model model) {
 		
 		LinkDeviceDTO dto = bemsMapper.getLinkedDevice(linkId);	
-		System.out.println("deviceUpdatePage"+dto);
 		model.addAttribute("dto", dto);
 		
 		return "bems/device_update";
@@ -130,7 +124,6 @@ public class BemsController {
 	@RequestMapping(value = "/device_update", method = RequestMethod.POST)
 	public String updateLinkedDevice(LinkDeviceDTO dto) {
 		
-		System.out.println("LinkDeviceDTO"+dto);
 		bemsMapper.updateLinkedDevice(dto);
 		
 		return "redirect:/bems/device_mgmt";
@@ -140,7 +133,6 @@ public class BemsController {
 	@RequestMapping(value = "/device_delete/{linkId}", method = RequestMethod.GET)
 	public @ResponseBody String deleteLinkedDevice(@PathVariable("linkId") Integer linkId) {
 		
-		System.out.println("deleteLinkedDevice"+linkId);
 		int res = bemsMapper.deleteLinkedDevice(linkId);
 		if(res > 0) {
 			return "success";

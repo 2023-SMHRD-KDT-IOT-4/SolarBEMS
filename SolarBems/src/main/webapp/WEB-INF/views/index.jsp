@@ -112,7 +112,7 @@
                           <span class="text-dark text-md font-weight-normal">LED</span>
                         </td>
                         <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">ON</span>
+                          <span class="text-dark text-md font-weight-normal">OFF</span>
                         </td>
                         <td class="align-middle text-center">
                           <span class="text-dark text-md font-weight-normal">사무실_출입</span>
@@ -147,7 +147,7 @@
                           <span class="text-dark text-md font-weight-normal">LED</span>
                         </td>
                         <td class="align-middle text-center">
-                          <span class="text-dark text-md font-weight-normal">ON</span>
+                          <span class="text-dark text-md font-weight-normal">OFF</span>
                         </td>
                         <td class="align-middle text-center">
                           <span class="text-dark text-md font-weight-normal">사무실_창가</span>
@@ -211,7 +211,14 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
   <!-- solar chart func -->
-  <script type="text/javascript" src="${contextPath}/resources/js/solar_chart_index.js"></script>
+  <script type="text/javascript" src="${contextPath}/resources/js/solar_chart.js"></script>
+  <script type="text/javascript">
+		$(document).ready(function() {
+			
+			getDayDeviceConsume('chart1'); // 조회기준 디바이스별 전력소비량 차트
+			getMonthlyTotalProdCons('chart4'); // 월별 총 전력 생산,소비 비교 차트
+		});
+  </script>
 </body>
 
 </html>

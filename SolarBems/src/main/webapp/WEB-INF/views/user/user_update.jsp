@@ -97,11 +97,11 @@
                     <label >아이디</label>
                     <input type="text" id="userId" name="userId" class="form-control" readonly="readonly" value="${sessionScope.user.userId}">
                   </div>
-                  <div class="input-group input-group-outline mb-1" id="userPwDiv1">
+                  <div class="input-group input-group-outline mb-2" id="userPwDiv1">
                     <label class="form-label">비밀번호 (최소 4자리 최대 16자리 입력)</label>
                     <input type="password" class="form-control" id="userPw1" name="userPw1" placeholder=""  maxlength="16" onkeyup="checkPw()">
                   </div>
-                  <div class="input-group input-group-outline mb-1" id="userPwDiv2">
+                  <div class="input-group input-group-outline mb-2" id="userPwDiv2">
                     <label class="form-label">비밀번호 확인</label>
                     <input type="password" class="form-control" id="userPw2" name="userPw2" maxlength="16" onkeyup="checkPw()">
                   </div>

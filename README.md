@@ -64,7 +64,7 @@ https://youtu.be/-Ie-fJOy5Gk
 ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/91ca8d97-3ed7-4ff8-b911-71a6ac4821dc)
 
 ## 5. 시스템 아키텍쳐
-![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/8d370a38-20e6-4ec6-bc5d-ff79e5a9d0d3)
+![image](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/77395af4-15ff-44d9-a0ee-700d1e7e8405)
 
 
 ## 6. 주요 메뉴 구성도

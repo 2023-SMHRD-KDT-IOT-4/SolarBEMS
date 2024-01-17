@@ -44,16 +44,6 @@ https://youtu.be/-Ie-fJOy5Gk
 ## 7. 역할분담
 ![08  역할 분담](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/07036c7f-13be-4d1f-92fc-f7ead8096c7d)
 
-### 박찬영
-  * 1
-### 박준언
-  * 1
-### 신우진
-  * 1
-### 조용성
-  * 1
-### 주경훈
-  * 1 
 
 ## 8. 트러블슈팅
 ### 8-1) 아두이노-웹간 통신 오류

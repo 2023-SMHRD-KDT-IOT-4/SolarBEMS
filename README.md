@@ -17,10 +17,18 @@ https://youtu.be/-Ie-fJOy5Gk
 * 디바이스의 전력 소비량 및 전력 생산량 표시 기능
 * 월별 전력 소비량 및 전력 생산량 표시 기능
   
+![01  로그인 관련 기능](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/5e1099dd-edd6-40f1-b56d-1b6497c941ea)
+<br>
+![02  연동 디바이스 등록](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/ed9f6987-72ef-402e-8d50-a91a80917edd)
+<br>
+![03  전력 전환](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/db7e4674-ace2-417b-bd63-44ae3c08e568)
+<br>
+![04  연동 디바이스 관리](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/a8c2632a-b0e1-4d66-9aa7-7aa9ead401a8)
+<br>
+![05  연동 디바이스 제어](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/3c4594cb-8e03-4102-99a8-9778fcf0aaad)
+<br>
+![06  전력 dashboard](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/197371de-47cc-49f9-ab53-911ed9af0f3f)
 
-
-  
-  ![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/faf05eea-4b73-49a7-a677-f7e526cd7d43)
 <br><br>
 ## 4. 사용언어 및 도구
 ![사용 언어 및 도구](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/53fcd84f-17e4-4e2a-82ad-61e644c51bb1)
@@ -30,10 +38,12 @@ https://youtu.be/-Ie-fJOy5Gk
 
 
 ## 6. 주요 메뉴 구성도
-![image](https://github.com/2023-SMHRD-SW-Fullstack-1/TodoWedding/assets/130349912/fc7b356c-e7df-42d8-b924-81c3ce97cbac)
+![07  주요 메뉴 구성도](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/6c4eecb9-05e0-411c-858d-3b3816150c2c)
+
 
 ## 7. 역할분담
-![역할 분담](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/c9829fa0-d5ed-4574-b54a-95856ad30c64)
+![08  역할 분담](https://github.com/2023-SMHRD-KDT-IOT-4/SolarBEMS/assets/152847567/07036c7f-13be-4d1f-92fc-f7ead8096c7d)
+
 ### 박찬영
   * 1
 ### 박준언
